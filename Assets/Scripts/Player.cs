@@ -1,228 +1,274 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
     [Header("Movimento")]
-    public float velocidadeAndando = 5f;
-    public float velocidadeCorrendo = 10f;
-    public float aceleracao = 15f;
-    public float velocidadeAr = 8f;
+    [SerializeField] private float velocidadeAndando = 5f;
+    [SerializeField] private float velocidadeCorrendo = 10f;
+    [SerializeField] private float aceleracao = 10f;
 
     [Header("Pulo")]
-    public float forcaPulo = 12f;
-    public int pulosExtras = 1;
-    public float coyoteTime = 0.15f;
-    public float bufferPulo = 0.1f;
+    [SerializeField] private float forcaPulo = 10f;
+    [SerializeField] private int pulosExtras = 1;
+    [SerializeField] private float coyoteTime = 0.1f;
 
-    [Header("Ground Check")]
-    public Transform groundCheck;
-    public float groundCheckRadius = 0.2f;
-    public LayerMask groundLayer;
+    [Header("Dash")]
+    [SerializeField] private float dashForca = 15f;
+    [SerializeField] private float dashDuracao = 0.2f;
+    [SerializeField] private float dashCooldown = 1f;
 
-    [Header("Sprite e Animação")]
-    public SpriteRenderer spriteRenderer;
-    public Animator animator;
+    [Header("Ground")]
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundRadius = 0.2f;
+    [SerializeField] private LayerMask groundLayer;
 
-    [Header("Corrida")]
-    public KeyCode teclaCorrida = KeyCode.LeftShift;
+    [Header("Teclas")]
+    [SerializeField] private KeyCode teclaCorrida = KeyCode.LeftShift;
+    [SerializeField] private KeyCode teclaDash = KeyCode.LeftAlt;
 
-    // Referência do combo
-    private PlayerCombo comboScript;
+    [Header("Componentes")]
+    [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private Animator anim;
 
-    // Variáveis privadas
     private Rigidbody2D rb;
-    private float movimentoInput;
+
+    // ================= ESTADOS =================
+    private float inputX;
     private float velocidadeAtual;
-    private bool estaNoChao;
-    private bool estaCorrendo;
+    private bool viradoDireita;
+
+    private bool noChao;
+    private bool correndo;
+
+    private bool dashando;
+    private bool podeDash = true;
+
+    private bool atacando;
+
     private int pulosRestantes;
     private float coyoteTimer;
-    private float bufferPuloTimer;
-    private bool facingRight = true;
-    private string animacaoAtual = "";
 
-    // Parâmetros da animação
-    private readonly string ANIM_IDLE = "Idle";
-    private readonly string ANIM_WALKING = "Walking";
-    private readonly string ANIM_RUNNING = "Running";
-    private readonly string ANIM_JUMP = "Jump";
-    private readonly string ANIM_FALL = "Fall";
+    // Combo
+    private int comboAtual;
+    private float tempoUltimoAtaque;
+    private readonly float tempoMaximoCombo = 0.8f;
 
+    // ================= INIT =================
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        comboScript = GetComponent<PlayerCombo>();  // Pega a referência do combo
 
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
+        if (!sprite) sprite = GetComponent<SpriteRenderer>();
+        if (!anim) anim = GetComponent<Animator>();
 
-        if (animator == null)
-            animator = GetComponent<Animator>();
-
-        if (groundCheck == null)
-        {
-            GameObject go = new GameObject("GroundCheck");
-            go.transform.parent = transform;
-            go.transform.localPosition = new Vector3(0, -0.5f, 0);
-            groundCheck = go.transform;
-        }
-
-        if (rb != null)
-        {
-            rb.gravityScale = 3f;
-            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-        }
+        rb.gravityScale = 3f;
     }
 
+    // ================= UPDATE =================
     void Update()
     {
-        if (rb == null) return;
-
-        // Input de movimento
-        movimentoInput = Input.GetAxisRaw("Horizontal");
-
-        // Input de corrida
-        estaCorrendo = Input.GetKey(teclaCorrida) && estaNoChao && Mathf.Abs(movimentoInput) > 0;
-
-        // Input de pulo
-        if (Input.GetButtonDown("Jump"))
-        {
-            bufferPuloTimer = bufferPulo;
-        }
-
-        bufferPuloTimer -= Time.deltaTime;
-        coyoteTimer -= Time.deltaTime;
-
-        // Ground Check
-        bool estavaNoChao = estaNoChao;
-        estaNoChao = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-
-        // Coyote Time
-        if (estaNoChao && !estavaNoChao)
-        {
-            coyoteTimer = coyoteTime;
-            pulosRestantes = pulosExtras;
-        }
-
-        if (estaNoChao && rb.linearVelocity.y <= 0)
-        {
-            pulosRestantes = pulosExtras;
-        }
-
-        // Pular
-        if (bufferPuloTimer > 0 && (coyoteTimer > 0 || pulosRestantes > 0))
-        {
-            Pular();
-            bufferPuloTimer = 0;
-        }
-
-        // Pulo curto
-        if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
-        }
-
-        // Atualiza animações
+        LerInputs();
+        GerenciarGround();
+        GerenciarPulo();
+        GerenciarCombo();
         AtualizarAnimacoes();
     }
 
     void FixedUpdate()
     {
-        if (rb == null) return;
+        if (dashando || atacando) return;
         Movimentar();
     }
 
+    // ================= INPUT =================
+    void LerInputs()
+    {
+        if (dashando) return;
+
+        inputX = Input.GetAxisRaw("Horizontal");
+        correndo = Input.GetKey(teclaCorrida) && noChao && Mathf.Abs(inputX) > 0;
+
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.J)) && !atacando)
+            Atacar();
+
+        if (Input.GetKeyDown(teclaDash) && podeDash && !atacando)
+            StartCoroutine(Dash());
+    }
+
+    // ================= MOVIMENTO =================
     void Movimentar()
     {
-        // TRAVA MOVIMENTO DURANTE ATAQUE
-        if (comboScript != null && comboScript.EstaAtacando())
-        {
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            return;
-        }
+        float velocidadeAlvo = correndo ? velocidadeCorrendo : velocidadeAndando;
+        float alvo = inputX * velocidadeAlvo;
 
-        float velocidadeAlvo = estaCorrendo ? velocidadeCorrendo : velocidadeAndando;
-        float targetSpeed = movimentoInput * velocidadeAlvo;
-        float acceleration = estaNoChao ? aceleracao : velocidadeAr;
+        velocidadeAtual = Mathf.Lerp(velocidadeAtual, alvo, aceleracao * Time.fixedDeltaTime);
 
-        velocidadeAtual = Mathf.Lerp(velocidadeAtual, targetSpeed, acceleration * Time.fixedDeltaTime);
+        if (Mathf.Abs(inputX) < 0.01f)
+            velocidadeAtual = Mathf.Lerp(velocidadeAtual, 0, aceleracao * Time.fixedDeltaTime);
+
         rb.linearVelocity = new Vector2(velocidadeAtual, rb.linearVelocity.y);
 
-        // FLIP - USANDO SÓ SPRITERENDERER, SEM MEXER NO SCALE!
-        if (movimentoInput > 0)
+        // Flip
+        if (inputX > 0 && !viradoDireita)
         {
-            spriteRenderer.flipX = true;
+            viradoDireita = true;
+            sprite.flipX = true;
         }
-        else if (movimentoInput < 0)
+        else if (inputX < 0 && viradoDireita)
         {
-            spriteRenderer.flipX = false;
+            viradoDireita = false;
+            sprite.flipX = false;
         }
-
-        
     }
-    void Pular()
+
+    // ================= DASH =================
+    IEnumerator Dash()
     {
-        if (!estaNoChao && pulosRestantes <= 0) return;
+        podeDash = false;
+        dashando = true;
 
-        if (!estaNoChao)
+        float direcao = sprite.flipX ? 1f : -1f;
+
+        rb.linearVelocity = Vector2.zero;
+        rb.linearVelocity = new Vector2(direcao * dashForca, 0);
+
+        anim.SetTrigger("Dash");
+
+        yield return new WaitForSeconds(dashDuracao);
+
+        dashando = false;
+
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
+        yield return new WaitForSeconds(dashCooldown);
+        podeDash = true;
+    }
+
+    // ================= PULO =================
+    void GerenciarPulo()
+    {
+        coyoteTimer -= Time.deltaTime;
+
+        if (Input.GetButtonDown("Jump"))
         {
-            pulosRestantes--;
+            if (coyoteTimer > 0 || pulosRestantes > 0)
+            {
+                if (!noChao) pulosRestantes--;
+
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
+                rb.AddForce(Vector2.up * forcaPulo, ForceMode2D.Impulse);
+
+                coyoteTimer = 0;
+
+                // 💥 UM ÚNICO TRIGGER PRA TODOS OS PULOS
+                anim.SetTrigger("Pular");
+            }
         }
 
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
-        rb.AddForce(Vector2.up * forcaPulo, ForceMode2D.Impulse);
+        if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+    }
 
-        if (animator != null)
+    // ================= CHÃO =================
+    void GerenciarGround()
+    {
+        bool estavaNoChao = noChao;
+
+        noChao = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+
+        if (noChao && !estavaNoChao)
         {
-            animator.Play(ANIM_JUMP, 0, 0);
-            animacaoAtual = ANIM_JUMP;
+            coyoteTimer = coyoteTime;
+            pulosRestantes = pulosExtras;
+
+            anim.SetTrigger("Land");
+        }
+
+        if (noChao && rb.linearVelocity.y <= 0)
+            pulosRestantes = pulosExtras;
+    }
+
+    // ================= ATAQUE =================
+    void Atacar()
+    {
+        bool dentroDoTempo = (Time.time - tempoUltimoAtaque) <= tempoMaximoCombo;
+
+        comboAtual = (comboAtual == 0 || dentroDoTempo)
+            ? Mathf.Min(comboAtual + 1, 3)
+            : 1;
+
+        tempoUltimoAtaque = Time.time;
+        StartCoroutine(ExecutarAtaque());
+    }
+
+    IEnumerator ExecutarAtaque()
+    {
+        atacando = true;
+
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
+        string trigger = comboAtual switch
+        {
+            1 => "Ataque",
+            2 => "Ataque2",
+            3 => "Ataque3",
+            _ => "Ataque"
+        };
+
+        anim.SetTrigger(trigger);
+
+        yield return new WaitForSeconds(0.35f);
+
+        atacando = false;
+
+        if (comboAtual == 3)
+        {
+            comboAtual = 0;
+            yield return new WaitForSeconds(0.15f);
         }
     }
 
+    void GerenciarCombo()
+    {
+        if (comboAtual > 0 && Time.time > tempoUltimoAtaque + tempoMaximoCombo)
+            comboAtual = 0;
+    }
+
+    // ================= ANIMAÇÕES =================
     void AtualizarAnimacoes()
     {
-        if (animator == null) return;
+        if (!anim) return;
 
-        // Se estiver atacando, não troca animação
-        if (comboScript != null && comboScript.EstaAtacando()) return;
+        float velX = Mathf.Abs(rb.linearVelocity.x);
+        float velY = rb.linearVelocity.y;
 
-        float velocidadeHorizontal = Mathf.Abs(rb.linearVelocity.x);
-        bool estaNoAr = !estaNoChao;
+        anim.SetBool("NoChao", noChao);
+        anim.SetFloat("VelocidadeY", velY);
 
-        if (estaNoAr)
+        if (noChao)
         {
-            if (rb.linearVelocity.y > 0.1f)
-            {
-                PlayAnimationIfChanged(ANIM_JUMP);
-            }
-            else if (rb.linearVelocity.y < -0.1f)
-            {
-                PlayAnimationIfChanged(ANIM_FALL);
-            }
+            bool movendo = velX > 0.1f;
+
+            anim.SetBool("Andando", movendo);
+            anim.SetBool("Correndo", correndo && movendo);
         }
         else
         {
-            if (velocidadeHorizontal < 0.1f)
-            {
-                PlayAnimationIfChanged(ANIM_IDLE);
-            }
-            else if (estaCorrendo && velocidadeHorizontal > velocidadeAndando * 0.5f)
-            {
-                PlayAnimationIfChanged(ANIM_RUNNING);
-            }
-            else
-            {
-                PlayAnimationIfChanged(ANIM_WALKING);
-            }
+            anim.SetBool("Andando", false);
+            anim.SetBool("Correndo", false);
         }
-    }
 
-    void PlayAnimationIfChanged(string nomeAnimacao)
-    {
-        if (animacaoAtual != nomeAnimacao)
+        // 💥 CONTROLE REAL DE PULO E QUEDA
+        if (!noChao)
         {
-            animacaoAtual = nomeAnimacao;
-            animator.Play(nomeAnimacao);
+            anim.SetBool("Pulando", velY > 0.1f);
+            anim.SetBool("Queda", velY < -0.1f);
+        }
+        else
+        {
+            anim.SetBool("Pulando", false);
+            anim.SetBool("Queda", false);
         }
     }
 
@@ -231,7 +277,7 @@ public class Player : MonoBehaviour
         if (groundCheck != null)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+            Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
         }
     }
 }
