@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
     [Header("Pulo")]
     [SerializeField] private float forcaPulo = 10f;
-    [SerializeField] private int pulosExtras = 1;
+    [SerializeField] private int pulosExtras = 0;
     [SerializeField] private float coyoteTime = 0.1f;
 
     [Header("Dash")]
@@ -152,7 +152,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            if (coyoteTimer > 0 || pulosRestantes > 0)
+            // Agora só funciona se estiver no coyote time (recém saiu do chão)
+            if (coyoteTimer > 0 || pulosRestantes > 0)  // mantenha essa linha original
             {
                 if (!noChao) pulosRestantes--;
 
@@ -160,8 +161,6 @@ public class Player : MonoBehaviour
                 rb.AddForce(Vector2.up * forcaPulo, ForceMode2D.Impulse);
 
                 coyoteTimer = 0;
-
-                // 💥 UM ÚNICO TRIGGER PRA TODOS OS PULOS
                 anim.SetTrigger("Pular");
             }
         }
