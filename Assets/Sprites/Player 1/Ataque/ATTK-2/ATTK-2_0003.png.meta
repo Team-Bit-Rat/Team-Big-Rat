@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 95
+  spritePixelsToUnits: 90
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,12 +129,12 @@ TextureImporter:
       name: ATTK-2_0003_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 22
         y: 7
-        width: 111
-        height: 118
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 106
+        height: 113
+      alignment: 9
+      pivot: {x: 0.6046039, y: 0.50392497}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6f3f40d15f6916f41b4eeb8dbf74703d
+    spriteID: 1f634774e23b27a41847acdc549ea3e5
     internalID: 0
     vertices: []
     indices: 

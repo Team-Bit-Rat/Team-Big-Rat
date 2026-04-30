@@ -5,9 +5,6 @@ TextureImporter:
   - first:
       213: 7107968588549412241
     second: ATTK-2_0005_0
-  - first:
-      213: -8535536316569489692
-    second: ATTK-2_0005_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 65
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,12 +129,12 @@ TextureImporter:
       name: ATTK-2_0005_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 17
+        x: 4
+        y: 28
         width: 124
-        height: 105
+        height: 84
       alignment: 9
-      pivot: {x: 0.7403904, y: 0.47284916}
+      pivot: {x: 0.78614223, y: 0.49999994}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -150,33 +147,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: ATTK-2_0005_1
-      rect:
-        serializedVersion: 2
-        x: 107
-        y: 92
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4eeed6b71feab8980800000000000000
-      internalID: -8535536316569489692
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6ae763ec42c9a2348ab2c73b0e0ccd79
+    spriteID: 4c0a8a6cc81140844a05685333bda41a
     internalID: 0
     vertices: []
     indices: 
@@ -187,7 +162,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       ATTK-2_0005_0: 7107968588549412241
-      ATTK-2_0005_1: -8535536316569489692
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

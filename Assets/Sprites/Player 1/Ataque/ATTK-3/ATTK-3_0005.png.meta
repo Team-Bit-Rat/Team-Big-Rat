@@ -3,8 +3,8 @@ guid: 996f1a331dd068a4984a1c63f4fe1a0f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2155788006800030418
-    second: ATTK-3_0005_0
+      213: 3102885710312982347
+    second: attk-3_0005_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ATTK-3_0005_0
+      name: attk-3_0005_0
       rect:
         serializedVersion: 2
-        x: 4
+        x: 29
         y: 7
-        width: 111
-        height: 120
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 151
+        height: 118
+      alignment: 9
+      pivot: {x: 0.6380953, y: 0.5059901}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e2503abca3a1512e0800000000000000
-      internalID: -2155788006800030418
+      spriteID: b4747dd1d1aaf0b20800000000000000
+      internalID: 3102885710312982347
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9475136a919e6ff4ea5dc6f7dde184ab
+    spriteID: 0e20f03142910ca449ee2f0df9d206b4
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ATTK-3_0005_0: -2155788006800030418
+      attk-3_0005_0: 3102885710312982347
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

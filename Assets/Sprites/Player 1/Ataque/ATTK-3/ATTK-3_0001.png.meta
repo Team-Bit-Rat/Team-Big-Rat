@@ -3,8 +3,8 @@ guid: b2af2c9ca2abbdf49a32d45a317b716b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3488983422814413872
-    second: ATTK-3_0001_0
+      213: -1148914865757819749
+    second: attk-3_0001_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 65
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ATTK-3_0001_0
+      name: attk-3_0001_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 13
+        x: 55
+        y: 26
         width: 125
-        height: 111
+        height: 89
       alignment: 9
-      pivot: {x: 0.7403905, y: 0.5039013}
+      pivot: {x: 0.8025365, y: 0.49602783}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 034641800fb5b6030800000000000000
-      internalID: 3488983422814413872
+      spriteID: b9ce65d440c3e00f0800000000000000
+      internalID: -1148914865757819749
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5d63571d2e4e69647b00f777fb9295e9
+    spriteID: d9568219bd73e574aa9c2ddf4244619c
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ATTK-3_0001_0: 3488983422814413872
+      attk-3_0001_0: -1148914865757819749
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 65
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -130,11 +130,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 17
-        width: 124
-        height: 105
+        y: 28
+        width: 128
+        height: 81
       alignment: 9
-      pivot: {x: 0.77496594, y: 0.4911531}
+      pivot: {x: 0.8026104, y: 0.51615435}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: effe50429e87a254a9e18bc90d4e33ec
+    spriteID: 54febe5e12e7bcd41a7794eaefa9b750
     internalID: 0
     vertices: []
     indices: 

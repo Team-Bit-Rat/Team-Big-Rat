@@ -206,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 52114986}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.49, y: 1.67, z: -10}
+  m_LocalPosition: {x: -5.75, y: 1.05, z: -16.3}
   m_LocalScale: {x: 11.404481, y: 9.196572, z: 11.404481}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -668,7 +668,7 @@ Transform:
   m_GameObject: {fileID: 699762375}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -104.1, y: -35.5, z: 0}
+  m_LocalPosition: {x: -11.4, y: 2.6, z: 0}
   m_LocalScale: {x: 6.176, y: 6.176, z: 6.176}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -703,7 +703,7 @@ Transform:
   m_GameObject: {fileID: 960169885}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -94.5, y: -34.6, z: 0}
+  m_LocalPosition: {x: 2.07, y: 2.31, z: 0}
   m_LocalScale: {x: 7.413396, y: 7.298763, z: 5.5013285}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1200,7 +1200,7 @@ Transform:
   m_GameObject: {fileID: 2013214241}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.34, y: 0.25, z: 0}
+  m_LocalPosition: {x: -6.23, y: 0.28, z: 0}
   m_LocalScale: {x: 3.4720633, y: 3.5494657, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1245,8 +1245,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.91, y: 1.22}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.62, y: 1.2}
+    newSize: {x: 1, y: 1.18}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1317,19 +1317,19 @@ MonoBehaviour:
   velocidadeAndando: 5
   velocidadeCorrendo: 10
   aceleracao: 15
-  forcaPulo: 12
+  forcaPulo: 15
   pulosExtras: 1
   coyoteTime: 0.15
-  dashForca: 15
+  dashForca: 30
   dashDuracao: 0.2
   dashCooldown: 1
   groundCheck: {fileID: 1092256621}
-  groundRadius: 0.2
+  groundRadius: 0.7
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   teclaCorrida: 304
-  teclaDash: 308
+  teclaDash: 274
   sprite: {fileID: 2013214248}
   anim: {fileID: 2013214245}
 --- !u!212 &2013214248
@@ -1386,7 +1386,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.18}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
