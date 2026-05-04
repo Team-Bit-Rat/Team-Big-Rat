@@ -190,7 +190,7 @@ public class Player : MonoBehaviour
             pulosRestantes = pulosExtras;
 
             anim.SetBool("Pulando Denovo", false);
-            anim.SetTrigger("Land");
+            ///anim.SetTrigger("Land");
         }
 
         if (noChao && rb.linearVelocity.y <= 0)
