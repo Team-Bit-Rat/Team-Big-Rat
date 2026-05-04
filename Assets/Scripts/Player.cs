@@ -109,16 +109,19 @@ public class Player : MonoBehaviour
 
         rb.linearVelocity = new Vector2(velocidadeAtual, rb.linearVelocity.y);
 
-        // Flip
-        if (inputX > 0 && !viradoDireita)
+        // FIX: só vira quando não está atacando
+        if (!atacando)
         {
-            viradoDireita = true;
-            sprite.flipX = true;
-        }
-        else if (inputX < 0 && viradoDireita)
-        {
-            viradoDireita = false;
-            sprite.flipX = false;
+            if (inputX > 0 && !viradoDireita)
+            {
+                viradoDireita = true;
+                sprite.flipX = true;
+            }
+            else if (inputX < 0 && viradoDireita)
+            {
+                viradoDireita = false;
+                sprite.flipX = false;
+            }
         }
     }
 
@@ -152,16 +155,21 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            // Agora só funciona se estiver no coyote time (recém saiu do chão)
-            if (coyoteTimer > 0 || pulosRestantes > 0)  // mantenha essa linha original
+            if (coyoteTimer > 0 || pulosRestantes > 0)
             {
-                if (!noChao) pulosRestantes--;
+                if (!noChao)
+                {
+                    pulosRestantes--;
+                    anim.SetBool("Pulando Denovo", true);
+                }
+                else
+                {
+                    anim.SetBool("Pulando Denovo", false);
+                }
 
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
                 rb.AddForce(Vector2.up * forcaPulo, ForceMode2D.Impulse);
-
                 coyoteTimer = 0;
-                anim.SetTrigger("Pular");
             }
         }
 
@@ -181,6 +189,7 @@ public class Player : MonoBehaviour
             coyoteTimer = coyoteTime;
             pulosRestantes = pulosExtras;
 
+            anim.SetBool("Pulando Denovo", false);
             anim.SetTrigger("Land");
         }
 
@@ -205,6 +214,7 @@ public class Player : MonoBehaviour
     {
         atacando = true;
 
+        // FIX: trava movimento lateral durante o ataque
         rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 
         string trigger = comboAtual switch
@@ -258,7 +268,6 @@ public class Player : MonoBehaviour
             anim.SetBool("Correndo", false);
         }
 
-        // 💥 CONTROLE REAL DE PULO E QUEDA
         if (!noChao)
         {
             anim.SetBool("Pulando", velY > 0.1f);
