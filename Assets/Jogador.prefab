@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2268113555672827357, guid: b135bb62430608d458fca5f4d0f4f3ca, type: 3}
+  m_Sprite: {fileID: 5905681027756182028, guid: b5d86792b90cd50479a873f9c2bebe98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,13 +142,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   deslocamentoNome: {x: 0, y: 0.85, z: 0}
-  tilesetJogador1: {fileID: 2800000, guid: b135bb62430608d458fca5f4d0f4f3ca, type: 3}
+  tilesetJogador1: {fileID: 2800000, guid: b5d86792b90cd50479a873f9c2bebe98, type: 3}
   tilesetJogador2: {fileID: 0}
   usarTilesetJogador2: 0
   inverterSpritePeloMovimento: 1
+  inverterDirecaoDoFlipX: 1
   fpsAnimacao: 10
   fpsAtaque: 14
   bloquearMovimentoDuranteAtaque: 1
+  forcaDash: 14
+  duracaoDash: 0.14
+  cooldownDash: 0.65
+  tempoEntreAtaques: 0.2
   spritesJogador1: []
   spritesJogador2: []
 --- !u!50 &8472276001883993814
@@ -204,7 +209,7 @@ MonoBehaviour:
   ScaleMaxInterpolationTime: 0.1
   AuthorityMode: 0
   TickSyncChildren: 0
-  UseUnreliableDeltas: 0
+  UseUnreliableDeltas: 1
   SyncPositionX: 1
   SyncPositionY: 1
   SyncPositionZ: 1
@@ -214,7 +219,7 @@ MonoBehaviour:
   SyncScaleX: 1
   SyncScaleY: 1
   SyncScaleZ: 1
-  PositionThreshold: 0.001
+  PositionThreshold: 0.01
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01
   UseQuaternionSynchronization: 0

@@ -56,12 +56,21 @@ public sealed class DescobridorHostLAN : MonoBehaviour
     {
         string texto = Encoding.UTF8.GetString(dados);
         string[] p = texto.Split('|');
-        if (p.Length != 4) return;
+        if (p.Length < 4) return;
         if (p[0] != RedeLanConst.AssinaturaHost) return;
 
         string nome = p[1];
         string ip = p[2];
         if (!int.TryParse(p[3], out int porta)) return;
+        int quantidadeJogadores = 1;
+        if (p.Length >= 5 && int.TryParse(p[4], out int qtdLida))
+        {
+            quantidadeJogadores = Mathf.Max(1, qtdLida);
+        }
+
+        string dificuldade = (p.Length >= 6 && !string.IsNullOrWhiteSpace(p[5]))
+            ? p[5]
+            : "easy";
 
         string id = $"{ip}:{porta}";
         float agora = Time.unscaledTime;
@@ -72,6 +81,8 @@ public sealed class DescobridorHostLAN : MonoBehaviour
             {
                 var atualizado = Hosts[i];
                 atualizado.Nome = nome;
+                atualizado.QuantidadeJogadores = quantidadeJogadores;
+                atualizado.Dificuldade = dificuldade;
                 atualizado.UltimoPing = agora;
                 Hosts[i] = atualizado;
                 return;
@@ -84,6 +95,8 @@ public sealed class DescobridorHostLAN : MonoBehaviour
             Nome = nome,
             Ip = ip,
             Porta = porta,
+            QuantidadeJogadores = quantidadeJogadores,
+            Dificuldade = dificuldade,
             UltimoPing = agora,
         });
     }
@@ -114,5 +127,7 @@ public struct HostLanInfo
     public string Nome;
     public string Ip;
     public int Porta;
+    public int QuantidadeJogadores;
+    public string Dificuldade;
     public float UltimoPing;
 }

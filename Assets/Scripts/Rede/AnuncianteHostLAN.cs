@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using Unity.Netcode;
 using UnityEngine;
 
 public sealed class AnuncianteHostLAN : MonoBehaviour
@@ -11,11 +12,15 @@ public sealed class AnuncianteHostLAN : MonoBehaviour
     float proximoEnvio;
     string nomeHost = "Host";
     int portaJogo = 7777;
+    string dificuldadeAtual = "easy";
+    NetworkManager nm;
 
-    public void IniciarAnuncio(string nome, int porta)
+    public void IniciarAnuncio(string nome, int porta, string dificuldade = "easy")
     {
         nomeHost = string.IsNullOrWhiteSpace(nome) ? "Host" : nome.Trim();
         portaJogo = porta;
+        dificuldadeAtual = string.IsNullOrWhiteSpace(dificuldade) ? "easy" : dificuldade.Trim().ToLowerInvariant();
+        nm = NetworkManager.Singleton;
 
         if (udp != null) return;
 
@@ -41,7 +46,8 @@ public sealed class AnuncianteHostLAN : MonoBehaviour
         try
         {
             string ip = PegarIpLocal();
-            string payload = $"{RedeLanConst.AssinaturaHost}|{nomeHost}|{ip}|{portaJogo}";
+            int jogadores = PegarQuantidadeJogadores();
+            string payload = $"{RedeLanConst.AssinaturaHost}|{nomeHost}|{ip}|{portaJogo}|{jogadores}|{dificuldadeAtual}";
             byte[] bytes = Encoding.UTF8.GetBytes(payload);
             udp.Send(bytes, bytes.Length, destino);
         }
@@ -55,6 +61,13 @@ public sealed class AnuncianteHostLAN : MonoBehaviour
     {
         udp?.Close();
         udp = null;
+    }
+
+    int PegarQuantidadeJogadores()
+    {
+        if (nm == null) nm = NetworkManager.Singleton;
+        if (nm == null || !nm.IsListening) return 1;
+        return Mathf.Max(1, nm.ConnectedClientsIds.Count);
     }
 
     static string PegarIpLocal()
