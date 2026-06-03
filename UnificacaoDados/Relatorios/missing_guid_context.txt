@@ -1,0 +1,171 @@
+GUID=0000000000000000e000000000000000
+FILE=Assets/Scenes\CenaDoCT.unity LINE=34
+31:   m_FlareStrength: 1
+32:   m_FlareFadeSpeed: 3
+33:   m_HaloTexture: {fileID: 0}
+34:   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+35:   m_DefaultReflectionMode: 0
+36:   m_DefaultReflectionResolution: 128
+
+GUID=0000000000000000f000000000000000
+FILE=Assets/Scenes\Unificadas\Unified_BranchPedrao_Scenes_Ceta big Peter.unity LINE=96
+93:     m_ExportTrainingData: 0
+94:     m_TrainingDataDestination: TrainingData
+95:     m_LightProbeSampleCountMultiplier: 4
+96:   m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+97:   m_LightingSettings: {fileID: 0}
+98: --- !u!196 &4
+
+GUID=01614664b831546d2ae94a42149d80ac
+FILE=Assets/Scenes\CenaDoCT.unity LINE=522
+519:   m_GameObject: {fileID: 983178498}
+520:   m_Enabled: 1
+521:   m_EditorHideFlags: 0
+522:   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+523:   m_Name: 
+524:   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.UI.InputSystemUIInputModule
+
+GUID=073797afb82c5a1438f328866b10b3f0
+FILE=Assets/Scenes\Unificadas\Unified_BranchPedrao_Scenes_Cena do JHON.unity LINE=455
+452:   m_GameObject: {fileID: 619394800}
+453:   m_Enabled: 1
+454:   m_EditorHideFlags: 0
+455:   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+456:   m_Name: 
+457:   m_EditorClassIdentifier: 
+
+GUID=0cd44c1031e13a943bb63640046fad76
+FILE=Assets/Scenes\ServerHub.unity LINE=559
+556:   m_GameObject: {fileID: 1480715833}
+557:   m_Enabled: 1
+558:   m_EditorHideFlags: 0
+559:   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+560:   m_Name: 
+561:   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+
+GUID=311925a002f4447b3a28927169b83ea6
+FILE=Assets/Scenes\bla.unity LINE=372
+369:   m_SortingLayer: 0
+370:   m_SortingOrder: 0
+371:   m_MaskInteraction: 0
+372:   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+373:   m_Color: {r: 0.5396226, g: 0.24333926, b: 0.24333926, a: 1}
+374:   m_FlipX: 0
+
+GUID=593a2fe42fa9d37498c96f9a383b6521
+FILE=Assets/Scenes\CenaDoCT.unity LINE=631
+628:   m_GameObject: {fileID: 1725491773}
+629:   m_Enabled: 1
+630:   m_EditorHideFlags: 0
+631:   m_Script: {fileID: 11500000, guid: 593a2fe42fa9d37498c96f9a383b6521, type: 3}
+632:   m_Name: 
+633:   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkManager
+
+GUID=6960e84d07fb87f47956e7a81d71c4e6
+FILE=Assets/Scenes\CenaDoCT.unity LINE=601
+598:   m_GameObject: {fileID: 1725491773}
+599:   m_Enabled: 1
+600:   m_EditorHideFlags: 0
+601:   m_Script: {fileID: 11500000, guid: 6960e84d07fb87f47956e7a81d71c4e6, type: 3}
+602:   m_Name: 
+603:   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Transports.UTP.UnityTransport
+
+GUID=72ece51f2901e7445ab60da3685d6b5f
+FILE=Assets/Scenes\Unificadas\Unified_ChegaComJhon_Scenes_bla.unity LINE=269
+266:   m_GameObject: {fileID: 52114986}
+267:   m_Enabled: 1
+268:   m_EditorHideFlags: 0
+269:   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+270:   m_Name: 
+271:   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBrain
+
+GUID=76c392e42b5098c458856cdf6ecaaaa1
+FILE=Assets/Scenes\ServerHub.unity LINE=405
+402:   m_GameObject: {fileID: 1333750313}
+403:   m_Enabled: 1
+404:   m_EditorHideFlags: 0
+405:   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+406:   m_Name: 
+407:   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
+
+GUID=886251e9a18ece04ea8e61686c173e1b
+FILE=Assets/Scenes\Unificadas\Unified_ChegaComJhon_Scenes_bla.unity LINE=743
+740:   m_GameObject: {fileID: 1249595690}
+741:   m_Enabled: 1
+742:   m_EditorHideFlags: 0
+743:   m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
+744:   m_Name: 
+745:   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePositionComposer
+
+GUID=a79441f348de89743a2939f4d699eac1
+FILE=Assets/Scenes\CenaDoCT.unity LINE=310
+307:   m_GameObject: {fileID: 519420028}
+308:   m_Enabled: 1
+309:   m_EditorHideFlags: 0
+310:   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+311:   m_Name: 
+312:   m_EditorClassIdentifier: 
+
+GUID=a8b9fa25681ef5848b6b2f405266d62f
+FILE=Assets/Scenes\Unificadas\Unified_BranchPedrao_Scenes_Cena do JHON.unity LINE=742
+739:   m_GameObject: {fileID: 2085286588}
+740:   m_Enabled: 1
+741:   m_EditorHideFlags: 0
+742:   m_Script: {fileID: 11500000, guid: a8b9fa25681ef5848b6b2f405266d62f, type: 3}
+743:   m_Name: 
+744:   m_EditorClassIdentifier: Assembly-CSharp::Combo
+
+GUID=a97c105638bdf8b4a8650670310a4cd3
+FILE=Assets/Scenes\Unificadas\Unified_BranchPedrao_Scenes_Cena do JHON.unity LINE=212
+209:   m_RenderingLayerMask: 1
+210:   m_RendererPriority: 0
+211:   m_Materials:
+212:   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+213:   m_StaticBatchInfo:
+214:     firstSubMesh: 0
+
+GUID=ca9f5fa95ffab41fb9a615ab714db018
+FILE=Assets/Scenes\CenaDoCT.unity LINE=529
+526:   m_MoveRepeatDelay: 0.5
+527:   m_MoveRepeatRate: 0.1
+528:   m_XRTrackingOrigin: {fileID: 0}
+529:   m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+530:   m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+531:   m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+
+GUID=dc42784cf147c0c48a680349fa168899
+FILE=Assets/Scenes\ServerHub.unity LINE=542
+539:   m_GameObject: {fileID: 1480715833}
+540:   m_Enabled: 1
+541:   m_EditorHideFlags: 0
+542:   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+543:   m_Name: 
+544:   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+
+GUID=ee606aa30df13714aaec7d0000ed156a
+FILE=Assets/Scenes\Unificadas\Unified_BranchPedrao_Scenes_Cena do JHON.unity LINE=641
+638:   m_GameObject: {fileID: 2085286588}
+639:   m_Enabled: 1
+640:   m_EditorHideFlags: 0
+641:   m_Script: {fileID: 11500000, guid: ee606aa30df13714aaec7d0000ed156a, type: 3}
+642:   m_Name: 
+643:   m_EditorClassIdentifier: Assembly-CSharp::Player
+
+GUID=f9dfa5b682dcd46bda6128250e975f58
+FILE=Assets/Scenes\Unificadas\Unified_ChegaComJhon_Scenes_bla.unity LINE=774
+771:   m_GameObject: {fileID: 1249595690}
+772:   m_Enabled: 1
+773:   m_EditorHideFlags: 0
+774:   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+775:   m_Name: 
+776:   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
+
+GUID=fe87c0e1cc204ed48ad3b37840f39efc
+FILE=Assets/Scenes\ServerHub.unity LINE=168
+165:   m_GameObject: {fileID: 425463371}
+166:   m_Enabled: 1
+167:   m_EditorHideFlags: 0
+168:   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+169:   m_Name: 
+170:   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+

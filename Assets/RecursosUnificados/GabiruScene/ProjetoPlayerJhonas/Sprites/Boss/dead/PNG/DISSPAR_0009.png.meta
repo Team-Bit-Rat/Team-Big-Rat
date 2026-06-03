@@ -1,0 +1,663 @@
+fileFormatVersion: 2
+guid: af12fd2eba52b30408b2a638933eb060
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -332076353157977453
+    second: DISSPAR_0009_0
+  - first:
+      213: 7448472378762034736
+    second: DISSPAR_0009_1
+  - first:
+      213: 2143842537934897413
+    second: DISSPAR_0009_2
+  - first:
+      213: -5286723111945482434
+    second: DISSPAR_0009_3
+  - first:
+      213: 7304912825419463128
+    second: DISSPAR_0009_4
+  - first:
+      213: 6414856979644829538
+    second: DISSPAR_0009_5
+  - first:
+      213: -5512365981957729794
+    second: DISSPAR_0009_6
+  - first:
+      213: 2356574802188050838
+    second: DISSPAR_0009_7
+  - first:
+      213: -7344363870083597540
+    second: DISSPAR_0009_8
+  - first:
+      213: -7652263893614865262
+    second: DISSPAR_0009_9
+  - first:
+      213: 3109663690017066815
+    second: DISSPAR_0009_10
+  - first:
+      213: 6998414814686946103
+    second: DISSPAR_0009_11
+  - first:
+      213: 3676177386812207067
+    second: DISSPAR_0009_12
+  - first:
+      213: -3007710170689599156
+    second: DISSPAR_0009_13
+  - first:
+      213: 8556495862300032842
+    second: DISSPAR_0009_14
+  - first:
+      213: -8735141754006958263
+    second: DISSPAR_0009_15
+  - first:
+      213: -876494248531152265
+    second: DISSPAR_0009_16
+  - first:
+      213: -850076318680509535
+    second: DISSPAR_0009_17
+  - first:
+      213: 7003832533927060069
+    second: DISSPAR_0009_18
+  - first:
+      213: 1781827147890154152
+    second: DISSPAR_0009_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DISSPAR_0009_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 20
+        width: 153
+        height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39a26b3f05a346bf0800000000000000
+      internalID: -332076353157977453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_1
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 126
+        width: 33
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03e7b6f2a2a4e5760800000000000000
+      internalID: 7448472378762034736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_2
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 108
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5014bfffd6570cd10800000000000000
+      internalID: 2143842537934897413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_3
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 105
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3f44a60759c1a6b0800000000000000
+      internalID: -5286723111945482434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_4
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 120
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d9725af283406560800000000000000
+      internalID: 7304912825419463128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_5
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 90
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26f4aa48f66260950800000000000000
+      internalID: 6414856979644829538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_6
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 76
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef1567d58542083b0800000000000000
+      internalID: -5512365981957729794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_7
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 84
+        width: 20
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6912e030c4c34b020800000000000000
+      internalID: 2356574802188050838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_8
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 81
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1b3476e8f3931a90800000000000000
+      internalID: -7344363870083597540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_9
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 86
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 294d98d3882bdc590800000000000000
+      internalID: -7652263893614865262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_10
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 51
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3fc56e76aeb72b20800000000000000
+      internalID: 3109663690017066815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_11
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 64
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7332f3cd13d5f1160800000000000000
+      internalID: 6998414814686946103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_12
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 66
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdfe3482bd7640330800000000000000
+      internalID: 3676177386812207067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_13
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 62
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4987b809877246d0800000000000000
+      internalID: -3007710170689599156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_14
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 35
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4f3e7a07a7ceb670800000000000000
+      internalID: 8556495862300032842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_15
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 51
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94f8bb10bda86c680800000000000000
+      internalID: -8735141754006958263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_16
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 38
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 772b0a4ff1116d3f0800000000000000
+      internalID: -876494248531152265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_17
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 24
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a39311971ce334f0800000000000000
+      internalID: -850076318680509535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_18
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 20
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 562eb0be49c923160800000000000000
+      internalID: 7003832533927060069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DISSPAR_0009_19
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 23
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aad329b9525ab810800000000000000
+      internalID: 1781827147890154152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e92e40e22cfc7d648b3c4114fad0db6c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DISSPAR_0009_0: -332076353157977453
+      DISSPAR_0009_1: 7448472378762034736
+      DISSPAR_0009_10: 3109663690017066815
+      DISSPAR_0009_11: 6998414814686946103
+      DISSPAR_0009_12: 3676177386812207067
+      DISSPAR_0009_13: -3007710170689599156
+      DISSPAR_0009_14: 8556495862300032842
+      DISSPAR_0009_15: -8735141754006958263
+      DISSPAR_0009_16: -876494248531152265
+      DISSPAR_0009_17: -850076318680509535
+      DISSPAR_0009_18: 7003832533927060069
+      DISSPAR_0009_19: 1781827147890154152
+      DISSPAR_0009_2: 2143842537934897413
+      DISSPAR_0009_3: -5286723111945482434
+      DISSPAR_0009_4: 7304912825419463128
+      DISSPAR_0009_5: 6414856979644829538
+      DISSPAR_0009_6: -5512365981957729794
+      DISSPAR_0009_7: 2356574802188050838
+      DISSPAR_0009_8: -7344363870083597540
+      DISSPAR_0009_9: -7652263893614865262
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

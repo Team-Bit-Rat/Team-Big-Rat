@@ -1,0 +1,82 @@
+[
+    {
+        "Source":  "BranchPedrao\\Scenes\\bla.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_BranchPedrao_Scenes_bla.unity",
+        "SizeKB":  37.94
+    },
+    {
+        "Source":  "BranchPedrao\\Scenes\\Cena do JHON.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_BranchPedrao_Scenes_Cena do JHON.unity",
+        "SizeKB":  21.19
+    },
+    {
+        "Source":  "BranchPedrao\\Scenes\\CenaDoCT.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_BranchPedrao_Scenes_CenaDoCT.unity",
+        "SizeKB":  13.07
+    },
+    {
+        "Source":  "BranchPedrao\\Scenes\\Ceta big Peter.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_BranchPedrao_Scenes_Ceta big Peter.unity",
+        "SizeKB":  37.94
+    },
+    {
+        "Source":  "ChegaComJhon\\Scenes\\bla.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_ChegaComJhon_Scenes_bla.unity",
+        "SizeKB":  32.13
+    },
+    {
+        "Source":  "ChegaComJhon\\Scenes\\CenaDoCT.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_ChegaComJhon_Scenes_CenaDoCT.unity",
+        "SizeKB":  19.95
+    },
+    {
+        "Source":  "ChegaComJhon\\Scenes\\ServerHub.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_ChegaComJhon_Scenes_ServerHub.unity",
+        "SizeKB":  29.09
+    },
+    {
+        "Source":  "ColegaTeste\\Decoracao_Background.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_ColegaTeste_Decoracao_Background.unity",
+        "SizeKB":  5.86
+    },
+    {
+        "Source":  "ColegaTeste\\PlatformerSet1\\Scene\\Demo.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_ColegaTeste_PlatformerSet1_Scene_Demo.unity",
+        "SizeKB":  12.07
+    },
+    {
+        "Source":  "ColegaTeste\\ProjetoPlayerJhonas\\Scenes\\bla.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_ColegaTeste_ProjetoPlayerJhonas_Scenes_bla.unity",
+        "SizeKB":  34.3
+    },
+    {
+        "Source":  "ColegaTeste\\ProjetoPlayerJhonas\\Scenes\\Cena do JHON.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_ColegaTeste_ProjetoPlayerJhonas_Scenes_Cena do JHON.unity",
+        "SizeKB":  21.19
+    },
+    {
+        "Source":  "ColegaTeste\\ProjetoPlayerJhonas\\Scenes\\CenaDoCT.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_ColegaTeste_ProjetoPlayerJhonas_Scenes_CenaDoCT.unity",
+        "SizeKB":  13.07
+    },
+    {
+        "Source":  "ColegaTeste\\Scenes\\CenaDoColega.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_ColegaTeste_Scenes_CenaDoColega.unity",
+        "SizeKB":  7313.25
+    },
+    {
+        "Source":  "ColegaTeste\\Scenes\\CenaDoCT.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_ColegaTeste_Scenes_CenaDoCT.unity",
+        "SizeKB":  56.31
+    },
+    {
+        "Source":  "ColegaTeste\\Scenes\\Mapa_Base.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_ColegaTeste_Scenes_Mapa_Base.unity",
+        "SizeKB":  5.87
+    },
+    {
+        "Source":  "ColegaTeste\\Scenes\\SampleScene.unity",
+        "Target":  "Assets\\Scenes\\Unificadas\\Unified_ColegaTeste_Scenes_SampleScene.unity",
+        "SizeKB":  3906.7
+    }
+]

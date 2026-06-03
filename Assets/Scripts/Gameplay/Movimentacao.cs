@@ -2,12 +2,14 @@ using Unity.Netcode;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections.Generic;
 using System.Text;
+using System;
+using System.Reflection;
 
 #if UNITY_EDITOR
-using System;
 using System.Linq;
 using UnityEditor;
 #endif
@@ -49,30 +51,66 @@ public class Movimentacao : NetworkBehaviour
         NetworkVariableWritePermission.Owner);
 
     [SerializeField] float vel = 5f;
-    [SerializeField] float forcaPulo = 9f;
+    [SerializeField] float forcaPulo = 12f;
     [SerializeField] float gravidade = 3f;
     [SerializeField] float multiplicadorCorrida = 1.4f;
     [SerializeField] float distanciaChecarChao = 0.08f;
     [SerializeField] LayerMask camadaChao = ~0;
     [SerializeField] Vector3 deslocamentoNome = new(0f, 0.85f, 0f);
+    [Header("Nome do Jogador")]
+    [SerializeField] int ordemRenderNome = 32000;
+    [SerializeField] float offsetFrenteNome = -0.1f;
+    [Header("Camera Local")]
+    [SerializeField] bool configurarCameraLocalAutomaticamente = true;
+    [SerializeField] string nomeCameraCinemachine = "CinemachineCamera";
+    [SerializeField] float zoomCameraOrthographic = 4.5f;
+    [SerializeField] Vector3 offsetCameraAlvo = new(0f, 1.5f, -10f);
     [Header("Visual / Spritesheet")]
     [SerializeField] Texture2D tilesetJogador1;
     [SerializeField] Texture2D tilesetJogador2;
     [SerializeField] bool usarTilesetJogador2;
     [SerializeField] bool inverterSpritePeloMovimento = true;
     [SerializeField] bool inverterDirecaoDoFlipX = true;
-    [SerializeField] float fpsAnimacao = 10f;
-    [SerializeField] float fpsAtaque = 14f;
+    [SerializeField] float fpsAnimacao = 20f;
+    [SerializeField] float fpsIdle = 6f;
+    [SerializeField] float fpsPulo = 32f;
+    [SerializeField] float fpsAtaque = 24f;
+    [SerializeField] float multiplicadorFpsDash = 2.5f;
     [SerializeField] bool bloquearMovimentoDuranteAtaque = true;
     [Header("Rede / Otimizacao")]
     [SerializeField] float intervaloSyncEstadoRede = 0.05f;
     [SerializeField] float limiarSyncVelocidadeRede = 0.08f;
     [Header("Dash e Ataque")]
-    [SerializeField] float forcaDash = 14f;
-    [SerializeField] float duracaoDash = 0.14f;
+    [SerializeField] float forcaDash = 18f;
+    [SerializeField] float duracaoDash = 0.16f;
     [SerializeField] float cooldownDash = 0.65f;
+    [Header("Pulo")]
+    [SerializeField] float tempoCoyote = 0.12f;
+    [SerializeField] float bufferPulo = 0.12f;
+    [SerializeField] float multiplicadorCortePulo = 0.55f;
+    [SerializeField] float multiplicadorGravidadeQueda = 1.35f;
     [SerializeField] float tempoEntreAtaques = 0.2f;
     [SerializeField] float janelaCombo = 0.45f;
+    [Header("Colisao / Degraus")]
+    [SerializeField] bool configurarColisaoPlayer = true;
+    [SerializeField] Vector2 tamanhoCapsuleColisor = new(0.72f, 1.05f);
+    [SerializeField] Vector2 offsetCapsuleColisor = new(0f, 0.05f);
+    [SerializeField] bool usarMaterialSemAtrito = true;
+    [SerializeField] float alturaMaximaDegrau = 0.28f;
+    [SerializeField] float distanciaChecarDegrau = 0.16f;
+    [Header("Spawn Multiplayer")]
+    [SerializeField] bool aplicarSpawnMultiplayerPorOwner = true;
+    [SerializeField] string cenaSpawnMultiplayer = "Unified_ColegaTeste_Scenes_CenaDoColega";
+    [SerializeField] Vector3 spawnJogador1 = new(0.52f, 0.35f, 0f);
+    [SerializeField] Vector3 spawnJogador2 = new(137f, 0.35f, 0f);
+    [Header("Combate (Pedrao + Jhon)")]
+    [SerializeField] float danoAtaqueBase = 50f;
+    [SerializeField] float stunNoInimigo = 0.2f;
+    [SerializeField] Vector2 tamanhoHitboxAtaque = new(0.8f, 0.8f);
+    [SerializeField] float offsetHitboxX = 0.6f;
+    [SerializeField] float tempoWindupAtaque = 0.1f;
+    [SerializeField] float tempoHitboxAtiva = 0.15f;
+    [SerializeField] LayerMask camadaAlvosCombate = ~0;
     [SerializeField, HideInInspector] Sprite[] spritesJogador1 = System.Array.Empty<Sprite>();
     [SerializeField, HideInInspector] Sprite[] spritesJogador2 = System.Array.Empty<Sprite>();
 
@@ -89,13 +127,23 @@ public class Movimentacao : NetworkBehaviour
     float momentoFimDash;
     float proximoDashDisponivel;
     float proximoAtaqueDisponivel;
-    float direcaoDashAtual = 1f;
+    float momentoUltimoNoChao = -999f;
+    float momentoPuloSolicitado = -999f;
+    bool soltouPulo;
+    Vector2 direcaoDashAtual = Vector2.right;
+    float forcaDashAtual;
     float momentoUltimoCliqueAtaque;
     int etapaAtaqueAtual;
     int cliquesAtaqueEmFila;
+    float instanteInicioHitboxAtaque;
+    float instanteFimHitboxAtaque;
+    readonly List<Collider2D> bufferHitboxAtaque = new(16);
+    readonly HashSet<int> alvosAtingidosNoAtaque = new();
+    static readonly float[] multiplicadoresDanoCombo = { 1f, 1.2f, 1.8f };
     readonly List<Sprite> framesIdle = new();
     readonly List<Sprite> framesWalk = new();
     readonly List<Sprite> framesRun = new();
+    readonly List<Sprite> framesDash = new();
     readonly List<Sprite> framesJump = new();
     readonly List<Sprite> framesJumpFallback = new();
     readonly List<Sprite> framesAttack1 = new();
@@ -116,6 +164,8 @@ public class Movimentacao : NetworkBehaviour
     bool ultimoDashSync;
     bool ultimoNoChaoSync;
     bool ultimoFlipXSync;
+    bool cameraLocalConfigurada;
+    PhysicsMaterial2D materialSemAtritoRuntime;
 
 #if UNITY_EDITOR
     const string PastaSpritesPlayer1 = "Assets/Sprites/Objetos/Player 1";
@@ -126,7 +176,7 @@ public class Movimentacao : NetworkBehaviour
     {
         corpo = GetComponent<Rigidbody2D>();
         colisor = GetComponent<Collider2D>();
-        if (colisor == null) colisor = gameObject.AddComponent<BoxCollider2D>();
+        ConfigurarColisorDoPlayer();
 
         sprite = GetComponent<SpriteRenderer>();
         CriarTextoSePreciso();
@@ -134,6 +184,8 @@ public class Movimentacao : NetworkBehaviour
         // Movimento de plataforma: mantem rotacao estavel e garante gravidade esperada.
         corpo.freezeRotation = true;
         corpo.gravityScale = gravidade;
+        corpo.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        corpo.interpolation = RigidbodyInterpolation2D.Interpolate;
 
 #if UNITY_EDITOR
         TentarPreencherCacheDeSpritesNoEditor();
@@ -141,6 +193,11 @@ public class Movimentacao : NetworkBehaviour
 
         ConfigurarSpritesDoTilesetSelecionado();
         AplicarFrameInicial();
+    }
+
+    void Start()
+    {
+        TentarConfigurarCameraLocal(false);
     }
 
     public override void OnNetworkSpawn()
@@ -151,6 +208,12 @@ public class Movimentacao : NetworkBehaviour
         AtualizarTextoNome(nomeRede.Value.ToString());
         ConfigurarFisicaPorOwnership();
 
+        if (DeveDesativarJogadorDeCenaNoOnline())
+        {
+            DesativarJogadorDeCenaNoOnline();
+            return;
+        }
+
         if (IsServer)
         {
             string nome = GerenciadorNomesRede.PegarNomeDoClient(OwnerClientId);
@@ -160,11 +223,14 @@ public class Movimentacao : NetworkBehaviour
 
         if (IsOwner)
         {
+            AplicarSpawnMultiplayerSePreciso();
             SincronizarEstadoRedeDoDono(
                 corpo != null ? corpo.linearVelocity.x : 0f,
                 corpo != null ? corpo.linearVelocity.y : 0f,
                 EstaNoChao(),
                 true);
+            cameraLocalConfigurada = false;
+            TentarConfigurarCameraLocal(true);
         }
         else
         {
@@ -182,18 +248,22 @@ public class Movimentacao : NetworkBehaviour
         etapaAtaqueAtual = 0;
         cliquesAtaqueEmFila = 0;
         corpo.linearVelocity = Vector2.zero;
+        alvosAtingidosNoAtaque.Clear();
+        direcaoDashAtual = Vector2.right;
+        forcaDashAtual = 0f;
         if (corpo != null)
         {
             corpo.bodyType = RigidbodyType2D.Dynamic;
             corpo.gravityScale = gravidade;
         }
+        cameraLocalConfigurada = false;
     }
 
     void Update()
     {
         AtualizarAnimacaoVisual();
 
-        if (!IsSpawned || !IsOwner) return;
+        if (!PodeControlarLocalmente()) return;
 
         var kb = Keyboard.current;
         if (kb == null) return;
@@ -203,9 +273,15 @@ public class Movimentacao : NetworkBehaviour
         if (kb.spaceKey.wasPressedThisFrame || kb.wKey.wasPressedThisFrame || kb.upArrowKey.wasPressedThisFrame)
         {
             pediuPulo = true;
+            momentoPuloSolicitado = Time.time;
         }
 
-        if (kb.leftAltKey.wasPressedThisFrame || kb.rightAltKey.wasPressedThisFrame)
+        if (kb.spaceKey.wasReleasedThisFrame || kb.wKey.wasReleasedThisFrame || kb.upArrowKey.wasReleasedThisFrame)
+        {
+            soltouPulo = true;
+        }
+
+        if (kb.cKey.wasPressedThisFrame)
         {
             pediuDash = true;
         }
@@ -231,12 +307,7 @@ public class Movimentacao : NetworkBehaviour
 
     void FixedUpdate()
     {
-        if (!IsSpawned)
-        {
-            return;
-        }
-
-        if (!IsOwner)
+        if (!PodeControlarLocalmente())
         {
             return;
         }
@@ -252,6 +323,10 @@ public class Movimentacao : NetworkBehaviour
 
         Vector2 v = corpo.linearVelocity;
         estaNoChaoCache = EstaNoChao();
+        if (estaNoChaoCache)
+        {
+            momentoUltimoNoChao = Time.time;
+        }
 
         if (estaDashando)
         {
@@ -261,12 +336,13 @@ public class Movimentacao : NetworkBehaviour
             }
             else
             {
-                v.x = direcaoDashAtual * forcaDash;
+                v = direcaoDashAtual * forcaDashAtual;
                 corpo.linearVelocity = v;
                 SincronizarEstadoRedeDoDono(v.x, v.y, estaNoChaoCache);
                 pediuPulo = false;
                 pediuAtaque = false;
                 pediuDash = false;
+                soltouPulo = false;
                 return;
             }
         }
@@ -282,16 +358,38 @@ public class Movimentacao : NetworkBehaviour
             pediuPulo = false;
             pediuAtaque = false;
             pediuDash = false;
+            soltouPulo = false;
             return;
         }
 
         bool travarMovimento = estaAtacando && bloquearMovimentoDuranteAtaque;
         v.x = travarMovimento ? 0f : eixoX * velFinal;
 
-        if (pediuPulo && estaNoChaoCache)
+        bool puloBufferValido = pediuPulo || Time.time - momentoPuloSolicitado <= bufferPulo;
+        bool podeUsarCoyote = Time.time - momentoUltimoNoChao <= tempoCoyote;
+        if (puloBufferValido && podeUsarCoyote)
         {
             v.y = forcaPulo;
             estaNoChaoCache = false;
+            pediuPulo = false;
+            momentoPuloSolicitado = -999f;
+        }
+
+        if (soltouPulo && v.y > 0f)
+        {
+            v.y *= multiplicadorCortePulo;
+            soltouPulo = false;
+        }
+
+        if (!travarMovimento && Mathf.Abs(eixoX) > 0.01f)
+        {
+            AplicarAssistenciaDeDegrau(eixoX);
+        }
+
+        if (!travarMovimento && Mathf.Abs(eixoX) <= 0.01f && estaNoChaoCache)
+        {
+            v.x = 0f;
+            if (Mathf.Abs(v.y) < 0.25f) v.y = 0f;
         }
 
         if (pediuAtaque && !estaAtacando && Time.time >= proximoAtaqueDisponivel)
@@ -299,12 +397,15 @@ public class Movimentacao : NetworkBehaviour
             IniciarAtaque(1);
         }
 
+        AtualizarJanelaHitboxAtaque();
+        AtualizarGravidadeDoPulo(v.y);
         corpo.linearVelocity = v;
         bool noChaoParaSync = estaNoChaoCache && Mathf.Abs(v.y) < 0.05f;
         SincronizarEstadoRedeDoDono(v.x, v.y, noChaoParaSync);
         pediuPulo = false;
         pediuAtaque = false;
         pediuDash = false;
+        soltouPulo = false;
     }
 
     void OnNomeMudou(FixedString64Bytes anterior, FixedString64Bytes atual)
@@ -321,13 +422,93 @@ public class Movimentacao : NetworkBehaviour
         return hit.collider != null;
     }
 
+    void ConfigurarColisorDoPlayer()
+    {
+        if (!configurarColisaoPlayer)
+        {
+            if (colisor == null) colisor = gameObject.AddComponent<BoxCollider2D>();
+            return;
+        }
+
+        var capsule = GetComponent<CapsuleCollider2D>();
+        if (capsule == null) capsule = gameObject.AddComponent<CapsuleCollider2D>();
+
+        capsule.direction = CapsuleDirection2D.Vertical;
+        capsule.size = tamanhoCapsuleColisor;
+        capsule.offset = offsetCapsuleColisor;
+        capsule.isTrigger = false;
+        capsule.enabled = true;
+        colisor = capsule;
+
+        var colisores = GetComponents<Collider2D>();
+        for (int i = 0; i < colisores.Length; i++)
+        {
+            var c = colisores[i];
+            if (c != null && c != colisor && !c.isTrigger) c.enabled = false;
+        }
+
+        if (usarMaterialSemAtrito)
+        {
+            if (materialSemAtritoRuntime == null)
+            {
+                materialSemAtritoRuntime = new PhysicsMaterial2D("Player_SemAtrito_Runtime")
+                {
+                    friction = 0f,
+                    bounciness = 0f
+                };
+            }
+
+            colisor.sharedMaterial = materialSemAtritoRuntime;
+        }
+    }
+
+    void AplicarAssistenciaDeDegrau(float eixoX)
+    {
+        if (!configurarColisaoPlayer || !estaNoChaoCache || colisor == null || corpo == null) return;
+        if (Mathf.Abs(corpo.linearVelocity.y) > 0.05f) return;
+
+        float dir = Mathf.Sign(eixoX);
+        Bounds b = colisor.bounds;
+        Vector2 direcao = new Vector2(dir, 0f);
+        float skin = 0.02f;
+        float alcance = distanciaChecarDegrau + Mathf.Abs(corpo.linearVelocity.x) * Time.fixedDeltaTime;
+        float xFrente = dir > 0f ? b.max.x + skin : b.min.x - skin;
+        float yBaixo = b.min.y + Mathf.Min(alturaMaximaDegrau * 0.45f, b.extents.y * 0.8f);
+        float yLivre = b.min.y + alturaMaximaDegrau + 0.06f;
+
+        var obstaculoBaixo = Physics2D.Raycast(new Vector2(xFrente, yBaixo), direcao, alcance, camadaChao);
+        if (obstaculoBaixo.collider == null) return;
+
+        var obstaculoLivre = Physics2D.Raycast(new Vector2(xFrente, yLivre), direcao, alcance, camadaChao);
+        if (obstaculoLivre.collider != null) return;
+
+        Vector2 origemTopo = new Vector2(obstaculoBaixo.point.x + dir * 0.05f, b.min.y + alturaMaximaDegrau + 0.12f);
+        var topoDegrau = Physics2D.Raycast(origemTopo, Vector2.down, alturaMaximaDegrau + 0.18f, camadaChao);
+        if (topoDegrau.collider == null || topoDegrau.collider == colisor || topoDegrau.normal.y < 0.6f) return;
+
+        float subida = topoDegrau.point.y - b.min.y + 0.015f;
+        if (subida <= 0.001f || subida > alturaMaximaDegrau) return;
+
+        corpo.position += Vector2.up * subida;
+    }
+
+    void AtualizarGravidadeDoPulo(float velocidadeY)
+    {
+        if (corpo == null || corpo.bodyType != RigidbodyType2D.Dynamic) return;
+        corpo.gravityScale = velocidadeY < -0.1f
+            ? gravidade * multiplicadorGravidadeQueda
+            : gravidade;
+    }
+
     void CriarTextoSePreciso()
     {
         if (textoNome != null) return;
 
         var go = new GameObject("NomeJogador");
         go.transform.SetParent(transform, false);
-        go.transform.localPosition = deslocamentoNome;
+        Vector3 posNome = deslocamentoNome;
+        posNome.z = offsetFrenteNome;
+        go.transform.localPosition = posNome;
 
         textoNome = go.AddComponent<TextMeshPro>();
         textoNome.alignment = TextAlignmentOptions.Center;
@@ -335,6 +516,7 @@ public class Movimentacao : NetworkBehaviour
         textoNome.color = Color.white;
         textoNome.outlineWidth = 0.2f;
         textoNome.text = "Jogador";
+        ConfigurarRenderNomeNoTopo();
     }
 
     void AtualizarTextoNome(string valor)
@@ -343,6 +525,7 @@ public class Movimentacao : NetworkBehaviour
         textoNome.text = valor;
         if (sprite != null) sprite.enabled = true;
         textoNome.gameObject.SetActive(true);
+        ConfigurarRenderNomeNoTopo();
     }
 
     void AtualizarAnimacaoVisual()
@@ -386,9 +569,11 @@ public class Movimentacao : NetworkBehaviour
 
         if (dashandoVisual)
         {
-            List<Sprite> framesDash = framesRun.Count > 0 ? framesRun : (framesWalk.Count > 0 ? framesWalk : framesIdle);
-            TrocarFramesAtivos(framesDash, true);
-            AvancarAnimacao(fpsAnimacao * 1.35f);
+            List<Sprite> framesDoDash = framesDash.Count > 0
+                ? framesDash
+                : (framesRun.Count > 0 ? framesRun : (framesWalk.Count > 0 ? framesWalk : framesIdle));
+            TrocarFramesAtivos(framesDoDash, true);
+            AvancarAnimacao(fpsAnimacao * multiplicadorFpsDash);
             return;
         }
 
@@ -397,14 +582,16 @@ public class Movimentacao : NetworkBehaviour
             List<Sprite> framesNoAr = framesJump.Count > 0
                 ? framesJump
                 : (framesJumpFallback.Count > 0 ? framesJumpFallback : (framesIdle.Count > 0 ? framesIdle : framesWalk));
-            TrocarFramesAtivos(framesNoAr, true);
-            AvancarAnimacao(fpsAnimacao);
+            TrocarFramesAtivos(framesNoAr, false);
+            AvancarAnimacao(fpsPulo);
             return;
         }
 
         if (!estaMovendo)
         {
             TrocarFramesAtivos(framesIdle.Count > 0 ? framesIdle : (framesWalk.Count > 0 ? framesWalk : framesRun), true);
+            AvancarAnimacao(fpsIdle);
+            return;
         }
         else if (correndoVisual && framesRun.Count > 0)
         {
@@ -416,6 +603,45 @@ public class Movimentacao : NetworkBehaviour
         }
 
         AvancarAnimacao(fpsAnimacao);
+    }
+
+    bool DeveDesativarJogadorDeCenaNoOnline()
+    {
+        if (!IsSpawned || NetworkObject == null || NetworkObject.IsPlayerObject) return false;
+        if (NetworkManager.Singleton == null || !NetworkManager.Singleton.IsListening) return false;
+        return string.Equals(SceneManager.GetActiveScene().name, cenaSpawnMultiplayer, StringComparison.OrdinalIgnoreCase);
+    }
+
+    void DesativarJogadorDeCenaNoOnline()
+    {
+        if (corpo != null)
+        {
+            corpo.linearVelocity = Vector2.zero;
+            corpo.bodyType = RigidbodyType2D.Kinematic;
+            corpo.gravityScale = 0f;
+        }
+
+        if (colisor != null) colisor.enabled = false;
+        if (sprite != null) sprite.enabled = false;
+        if (textoNome != null) textoNome.gameObject.SetActive(false);
+        enabled = false;
+    }
+
+    void AplicarSpawnMultiplayerSePreciso()
+    {
+        if (!aplicarSpawnMultiplayerPorOwner) return;
+        if (!IsSpawned || NetworkObject == null || !NetworkObject.IsPlayerObject) return;
+        if (!string.Equals(SceneManager.GetActiveScene().name, cenaSpawnMultiplayer, StringComparison.OrdinalIgnoreCase)) return;
+
+        bool ehHost = NetworkManager.Singleton == null || OwnerClientId == NetworkManager.ServerClientId;
+        Vector3 destino = ehHost ? spawnJogador1 : spawnJogador2;
+        transform.position = destino;
+
+        if (corpo != null)
+        {
+            corpo.position = destino;
+            corpo.linearVelocity = Vector2.zero;
+        }
     }
 
     void TrocarFramesAtivos(List<Sprite> novosFrames, bool loop)
@@ -474,14 +700,13 @@ public class Movimentacao : NetworkBehaviour
             dir = olhandoDireita ? 1f : -1f;
         }
 
-        direcaoDashAtual = dir;
+        direcaoDashAtual = new Vector2(dir, 0f);
+        forcaDashAtual = forcaDash;
         estaDashando = true;
         momentoFimDash = Time.time + duracaoDash;
         proximoDashDisponivel = Time.time + cooldownDash;
 
-        Vector2 v = corpo.linearVelocity;
-        v.x = direcaoDashAtual * forcaDash;
-        corpo.linearVelocity = v;
+        corpo.linearVelocity = direcaoDashAtual * forcaDashAtual;
     }
 
     void IniciarAtaque(int etapa)
@@ -497,6 +722,10 @@ public class Movimentacao : NetworkBehaviour
         {
             etapaAtaqueRede.Value = (byte)etapaAtaqueAtual;
         }
+
+        alvosAtingidosNoAtaque.Clear();
+        instanteInicioHitboxAtaque = Time.time + Mathf.Max(0f, tempoWindupAtaque);
+        instanteFimHitboxAtaque = instanteInicioHitboxAtaque + Mathf.Max(0.01f, tempoHitboxAtiva);
 
         TrocarFramesAtivos(framesAtaqueAtivos, false);
     }
@@ -531,6 +760,7 @@ public class Movimentacao : NetworkBehaviour
         etapaAtaqueAtual = 0;
         cliquesAtaqueEmFila = 0;
         framesAtaqueAtivos = null;
+        alvosAtingidosNoAtaque.Clear();
         if (IsSpawned && IsOwner)
         {
             etapaAtaqueRede.Value = 0;
@@ -548,6 +778,7 @@ public class Movimentacao : NetworkBehaviour
             etapaAtaqueAtual = 0;
             cliquesAtaqueEmFila = 0;
             framesAtaqueAtivos = null;
+            alvosAtingidosNoAtaque.Clear();
             return;
         }
 
@@ -557,6 +788,61 @@ public class Movimentacao : NetworkBehaviour
         if (estaAtacando)
         {
             TrocarFramesAtivos(framesAtaqueAtivos, false);
+        }
+    }
+
+    void AtualizarJanelaHitboxAtaque()
+    {
+        if (!estaAtacando || etapaAtaqueAtual <= 0 || !PodeControlarLocalmente()) return;
+
+        float agora = Time.time;
+        if (agora < instanteInicioHitboxAtaque)
+        {
+            return;
+        }
+
+        if (agora > instanteFimHitboxAtaque)
+        {
+            return;
+        }
+
+        AplicarDanoHitboxAtual();
+    }
+
+    void AplicarDanoHitboxAtual()
+    {
+        float dir = 1f;
+        if (sprite != null)
+        {
+            dir = (inverterDirecaoDoFlipX ? sprite.flipX : !sprite.flipX) ? 1f : -1f;
+        }
+
+        Vector2 centro = (Vector2)transform.position + new Vector2(offsetHitboxX * dir, 0f);
+        var filtro = new ContactFilter2D();
+        filtro.useLayerMask = true;
+        filtro.layerMask = camadaAlvosCombate;
+        filtro.useTriggers = true;
+
+        bufferHitboxAtaque.Clear();
+        int hits = Physics2D.OverlapBox(
+            centro,
+            tamanhoHitboxAtaque,
+            0f,
+            filtro,
+            bufferHitboxAtaque);
+        if (hits <= 0) return;
+
+        float dano = danoAtaqueBase * multiplicadoresDanoCombo[Mathf.Clamp(etapaAtaqueAtual - 1, 0, multiplicadoresDanoCombo.Length - 1)];
+        for (int i = 0; i < hits; i++)
+        {
+            var col = bufferHitboxAtaque[i];
+            if (col == null) continue;
+            var alvo = col.GetComponentInParent<Entity>();
+            if (alvo == null || alvo.gameObject == gameObject) continue;
+
+            int id = alvo.GetInstanceID();
+            if (!alvosAtingidosNoAtaque.Add(id)) continue;
+            alvo.ReceiveDmg(dano, stunNoInimigo);
         }
     }
 
@@ -617,11 +903,125 @@ public class Movimentacao : NetworkBehaviour
         corpo.linearVelocity = Vector2.zero;
     }
 
+    bool PodeControlarLocalmente()
+    {
+        return !IsSpawned || IsOwner;
+    }
+
+    void ConfigurarRenderNomeNoTopo()
+    {
+        if (textoNome == null) return;
+
+        var renderNome = textoNome.GetComponent<Renderer>();
+        if (renderNome == null) return;
+
+        renderNome.sortingLayerID = 0;
+        renderNome.sortingOrder = Mathf.Clamp(ordemRenderNome, -32768, 32767);
+    }
+
+    void TentarConfigurarCameraLocal(bool forcar)
+    {
+        if (!configurarCameraLocalAutomaticamente) return;
+        if (!PodeControlarLocalmente()) return;
+        if (!forcar && cameraLocalConfigurada) return;
+
+        Component cameraAlvo = null;
+        Type tipoCinemachineCamera = Type.GetType("Unity.Cinemachine.CinemachineCamera, Unity.Cinemachine");
+        if (tipoCinemachineCamera != null)
+        {
+#if UNITY_2022_2_OR_NEWER
+            var cameras = UnityEngine.Object.FindObjectsByType(tipoCinemachineCamera, FindObjectsInactive.Include, FindObjectsSortMode.None);
+#else
+            var cameras = FindObjectsOfType(tipoCinemachineCamera, true);
+#endif
+            for (int i = 0; i < cameras.Length; i++)
+            {
+                var c = cameras[i] as Component;
+                if (c == null) continue;
+                if (!string.IsNullOrWhiteSpace(nomeCameraCinemachine) && c.name == nomeCameraCinemachine)
+                {
+                    cameraAlvo = c;
+                    break;
+                }
+
+                if (cameraAlvo == null) cameraAlvo = c;
+            }
+        }
+
+        if (cameraAlvo != null)
+        {
+            // Usa reflection para evitar erro de compilacao caso Cinemachine nao esteja disponivel.
+            Type tipoCamera = cameraAlvo.GetType();
+            PropertyInfo followProp = tipoCamera.GetProperty("Follow", BindingFlags.Instance | BindingFlags.Public);
+            if (followProp != null && followProp.CanWrite)
+            {
+                followProp.SetValue(cameraAlvo, transform);
+            }
+
+            PropertyInfo targetProp = tipoCamera.GetProperty("Target", BindingFlags.Instance | BindingFlags.Public);
+            object targetObj = targetProp != null ? targetProp.GetValue(cameraAlvo) : null;
+            if (targetObj != null)
+            {
+                Type tipoTarget = targetObj.GetType();
+                PropertyInfo trackingTargetProp = tipoTarget.GetProperty("TrackingTarget", BindingFlags.Instance | BindingFlags.Public);
+                if (trackingTargetProp != null && trackingTargetProp.CanWrite)
+                {
+                    trackingTargetProp.SetValue(targetObj, transform);
+                }
+
+                PropertyInfo customLookAtProp = tipoTarget.GetProperty("CustomLookAtTarget", BindingFlags.Instance | BindingFlags.Public);
+                if (customLookAtProp != null && customLookAtProp.CanWrite)
+                {
+                    customLookAtProp.SetValue(targetObj, false);
+                }
+            }
+
+            PropertyInfo lensProp = tipoCamera.GetProperty("Lens", BindingFlags.Instance | BindingFlags.Public);
+            if (lensProp != null && lensProp.CanRead && lensProp.CanWrite)
+            {
+                object lensObj = lensProp.GetValue(cameraAlvo);
+                if (lensObj != null)
+                {
+                    Type tipoLens = lensObj.GetType();
+                    FieldInfo orthoSizeField = tipoLens.GetField("OrthographicSize", BindingFlags.Instance | BindingFlags.Public);
+                    if (orthoSizeField != null)
+                    {
+                        orthoSizeField.SetValue(lensObj, Mathf.Max(1.5f, zoomCameraOrthographic));
+                        lensProp.SetValue(cameraAlvo, lensObj);
+                    }
+                }
+            }
+
+            Type tipoPositionComposer = Type.GetType("Unity.Cinemachine.CinemachinePositionComposer, Unity.Cinemachine");
+            if (tipoPositionComposer != null)
+            {
+                var positionComposer = cameraAlvo.GetComponent(tipoPositionComposer);
+                if (positionComposer != null)
+                {
+                    FieldInfo targetOffsetField = tipoPositionComposer.GetField("TargetOffset", BindingFlags.Instance | BindingFlags.Public);
+                    if (targetOffsetField != null)
+                    {
+                        targetOffsetField.SetValue(positionComposer, offsetCameraAlvo);
+                    }
+                }
+            }
+
+            cameraLocalConfigurada = true;
+        }
+
+        var cameraPrincipal = Camera.main;
+        if (cameraPrincipal != null && cameraPrincipal.orthographic)
+        {
+            cameraPrincipal.orthographicSize = Mathf.Max(1.5f, zoomCameraOrthographic);
+        }
+    }
+
     void ConfigurarSpritesDoTilesetSelecionado()
     {
         framesIdle.Clear();
         framesWalk.Clear();
         framesRun.Clear();
+        framesDash.Clear();
         framesJump.Clear();
         framesJumpFallback.Clear();
         framesAttack1.Clear();
@@ -665,6 +1065,12 @@ public class Movimentacao : NetworkBehaviour
                 continue;
             }
 
+            if (EhNomeDash(nome))
+            {
+                framesDash.Add(s);
+                continue;
+            }
+
             if (EhNomeAtaque(nome))
             {
                 if (EhNomeAtaqueEtapa(nome, 3))
@@ -699,6 +1105,7 @@ public class Movimentacao : NetworkBehaviour
         OrdenarFramesPorIndice(framesIdle);
         OrdenarFramesPorIndice(framesWalk);
         OrdenarFramesPorIndice(framesRun);
+        OrdenarFramesPorIndice(framesDash);
         OrdenarFramesPorIndice(framesJump);
         OrdenarFramesPorIndice(framesJumpFallback);
         OrdenarFramesPorIndice(framesAttack1);
@@ -707,6 +1114,7 @@ public class Movimentacao : NetworkBehaviour
         OrdenarFramesPorIndice(framesAttackFallback);
 
         if (framesRun.Count == 0 && framesWalk.Count > 0) framesRun.AddRange(framesWalk);
+        if (framesDash.Count == 0 && framesRun.Count > 0) framesDash.AddRange(framesRun);
         if (framesWalk.Count == 0 && framesRun.Count > 0) framesWalk.AddRange(framesRun);
         if (framesIdle.Count == 0 && framesWalk.Count > 0) framesIdle.Add(framesWalk[0]);
         if (framesJump.Count == 0 && framesJumpFallback.Count > 0) framesJump.AddRange(framesJumpFallback);
@@ -729,6 +1137,11 @@ public class Movimentacao : NetworkBehaviour
     static bool EhNomeRun(string nome)
     {
         return nome.Contains("run_") || nome.Contains("run-") || nome.StartsWith("run");
+    }
+
+    static bool EhNomeDash(string nome)
+    {
+        return nome.Contains("dash");
     }
 
     static bool EhNomeJump(string nome)
@@ -843,14 +1256,34 @@ public class Movimentacao : NetworkBehaviour
         gravidade = Mathf.Max(0f, gravidade);
         multiplicadorCorrida = Mathf.Max(1f, multiplicadorCorrida);
         fpsAnimacao = Mathf.Clamp(fpsAnimacao, 1f, 30f);
+        fpsIdle = Mathf.Clamp(fpsIdle, 1f, 30f);
+        fpsPulo = Mathf.Clamp(fpsPulo, 1f, 60f);
         fpsAtaque = Mathf.Clamp(fpsAtaque, 1f, 60f);
+        multiplicadorFpsDash = Mathf.Clamp(multiplicadorFpsDash, 1f, 4f);
         intervaloSyncEstadoRede = Mathf.Clamp(intervaloSyncEstadoRede, 0.02f, 0.2f);
         limiarSyncVelocidadeRede = Mathf.Clamp(limiarSyncVelocidadeRede, 0.01f, 0.5f);
         forcaDash = Mathf.Max(0f, forcaDash);
         duracaoDash = Mathf.Max(0.02f, duracaoDash);
         cooldownDash = Mathf.Max(0f, cooldownDash);
+        tempoCoyote = Mathf.Clamp(tempoCoyote, 0f, 0.3f);
+        bufferPulo = Mathf.Clamp(bufferPulo, 0f, 0.3f);
+        multiplicadorCortePulo = Mathf.Clamp(multiplicadorCortePulo, 0.1f, 1f);
+        multiplicadorGravidadeQueda = Mathf.Clamp(multiplicadorGravidadeQueda, 1f, 3f);
+        tamanhoCapsuleColisor.x = Mathf.Max(0.1f, tamanhoCapsuleColisor.x);
+        tamanhoCapsuleColisor.y = Mathf.Max(tamanhoCapsuleColisor.x, tamanhoCapsuleColisor.y);
+        alturaMaximaDegrau = Mathf.Clamp(alturaMaximaDegrau, 0.02f, 0.75f);
+        distanciaChecarDegrau = Mathf.Clamp(distanciaChecarDegrau, 0.02f, 0.5f);
         tempoEntreAtaques = Mathf.Max(0.02f, tempoEntreAtaques);
         janelaCombo = Mathf.Max(0.08f, janelaCombo);
+        danoAtaqueBase = Mathf.Max(0f, danoAtaqueBase);
+        stunNoInimigo = Mathf.Max(0f, stunNoInimigo);
+        tempoWindupAtaque = Mathf.Max(0f, tempoWindupAtaque);
+        tempoHitboxAtiva = Mathf.Max(0.01f, tempoHitboxAtiva);
+        tamanhoHitboxAtaque.x = Mathf.Max(0.05f, tamanhoHitboxAtaque.x);
+        tamanhoHitboxAtaque.y = Mathf.Max(0.05f, tamanhoHitboxAtaque.y);
+        offsetHitboxX = Mathf.Max(0.05f, offsetHitboxX);
+        zoomCameraOrthographic = Mathf.Max(1.5f, zoomCameraOrthographic);
+        ordemRenderNome = Mathf.Clamp(ordemRenderNome, -32768, 32767);
 
         if (tilesetJogador1 == null)
         {

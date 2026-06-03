@@ -1,0 +1,344 @@
+﻿[
+    {
+        "Branch":  "ChegaComJhon",
+        "Kind":  "Humana",
+        "Path":  "Scenes\\bla.unity",
+        "SizeKB":  32.13,
+        "GameObjects":  8,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  6
+    },
+    {
+        "Branch":  "ChegaComJhon",
+        "Kind":  "Humana",
+        "Path":  "Scenes\\CenaDoCT.unity",
+        "SizeKB":  19.95,
+        "GameObjects":  5,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  7
+    },
+    {
+        "Branch":  "ChegaComJhon",
+        "Kind":  "Humana",
+        "Path":  "Scenes\\ServerHub.unity",
+        "SizeKB":  29.09,
+        "GameObjects":  10,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  14
+    },
+    {
+        "Branch":  "ChegaComJhon",
+        "Kind":  "Editor/Template",
+        "Path":  "Settings\\Scenes\\URP2DSceneTemplate.unity",
+        "SizeKB":  9.65,
+        "GameObjects":  2,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "ChegaComJhon",
+        "Kind":  "Editor/Template",
+        "Path":  "_Recovery\\0 (1).unity",
+        "SizeKB":  24.05,
+        "GameObjects":  6,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  3
+    },
+    {
+        "Branch":  "ChegaComJhon",
+        "Kind":  "Editor/Template",
+        "Path":  "_Recovery\\0 (2).unity",
+        "SizeKB":  37.94,
+        "GameObjects":  9,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "ChegaComJhon",
+        "Kind":  "Editor/Template",
+        "Path":  "_Recovery\\0 (3).unity",
+        "SizeKB":  37.94,
+        "GameObjects":  9,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "ChegaComJhon",
+        "Kind":  "Editor/Template",
+        "Path":  "_Recovery\\0 (4).unity",
+        "SizeKB":  37.94,
+        "GameObjects":  9,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "ChegaComJhon",
+        "Kind":  "Editor/Template",
+        "Path":  "_Recovery\\0 (5).unity",
+        "SizeKB":  44.09,
+        "GameObjects":  13,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  20
+    },
+    {
+        "Branch":  "ChegaComJhon",
+        "Kind":  "Editor/Template",
+        "Path":  "_Recovery\\0.unity",
+        "SizeKB":  16.77,
+        "GameObjects":  4,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Humana",
+        "Path":  "Decoracao_Background.unity",
+        "SizeKB":  5.86,
+        "GameObjects":  1,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  0
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Humana",
+        "Path":  "PlatformerSet1\\Scene\\Demo.unity",
+        "SizeKB":  12.07,
+        "GameObjects":  4,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  0
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Humana",
+        "Path":  "ProjetoPlayerJhonas\\Scenes\\bla.unity",
+        "SizeKB":  34.3,
+        "GameObjects":  8,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  1
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Humana",
+        "Path":  "ProjetoPlayerJhonas\\Scenes\\Cena do JHON.unity",
+        "SizeKB":  21.19,
+        "GameObjects":  5,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  5
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Humana",
+        "Path":  "ProjetoPlayerJhonas\\Scenes\\CenaDoCT.unity",
+        "SizeKB":  13.07,
+        "GameObjects":  3,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  3
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Editor/Template",
+        "Path":  "ProjetoPlayerJhonas\\Settings\\Scenes\\URP2DSceneTemplate.unity",
+        "SizeKB":  9.99,
+        "GameObjects":  2,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Editor/Template",
+        "Path":  "ProjetoPlayerJhonas\\_Recovery\\0 (1).unity",
+        "SizeKB":  24.05,
+        "GameObjects":  6,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  3
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Editor/Template",
+        "Path":  "ProjetoPlayerJhonas\\_Recovery\\0 (2).unity",
+        "SizeKB":  37.94,
+        "GameObjects":  9,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Editor/Template",
+        "Path":  "ProjetoPlayerJhonas\\_Recovery\\0 (3).unity",
+        "SizeKB":  37.94,
+        "GameObjects":  9,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Editor/Template",
+        "Path":  "ProjetoPlayerJhonas\\_Recovery\\0 (4).unity",
+        "SizeKB":  37.94,
+        "GameObjects":  9,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Editor/Template",
+        "Path":  "ProjetoPlayerJhonas\\_Recovery\\0.unity",
+        "SizeKB":  16.77,
+        "GameObjects":  4,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Editor/Template",
+        "Path":  "ProjetoTesteAssets\\Settings\\Scenes\\URP2DSceneTemplate.unity",
+        "SizeKB":  9.99,
+        "GameObjects":  2,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Humana",
+        "Path":  "Scenes\\CenaDoColega.unity",
+        "SizeKB":  7313.25,
+        "GameObjects":  41,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  5
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Humana",
+        "Path":  "Scenes\\CenaDoCT.unity",
+        "SizeKB":  56.31,
+        "GameObjects":  7,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  3
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Humana",
+        "Path":  "Scenes\\Mapa_Base.unity",
+        "SizeKB":  5.87,
+        "GameObjects":  1,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  0
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Humana",
+        "Path":  "Scenes\\SampleScene.unity",
+        "SizeKB":  3906.7,
+        "GameObjects":  11,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  6
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Editor/Template",
+        "Path":  "Settings\\Scenes\\URP2DSceneTemplate.unity",
+        "SizeKB":  9.65,
+        "GameObjects":  2,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "ColegaTeste",
+        "Kind":  "Editor/Template",
+        "Path":  "_Recovery\\0.unity",
+        "SizeKB":  170.22,
+        "GameObjects":  22,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  3
+    },
+    {
+        "Branch":  "BranchPedrao",
+        "Kind":  "Humana",
+        "Path":  "Scenes\\bla.unity",
+        "SizeKB":  37.94,
+        "GameObjects":  9,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "BranchPedrao",
+        "Kind":  "Humana",
+        "Path":  "Scenes\\Cena do JHON.unity",
+        "SizeKB":  21.19,
+        "GameObjects":  5,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  5
+    },
+    {
+        "Branch":  "BranchPedrao",
+        "Kind":  "Humana",
+        "Path":  "Scenes\\CenaDoCT.unity",
+        "SizeKB":  13.07,
+        "GameObjects":  3,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  3
+    },
+    {
+        "Branch":  "BranchPedrao",
+        "Kind":  "Humana",
+        "Path":  "Scenes\\Ceta big Peter.unity",
+        "SizeKB":  37.94,
+        "GameObjects":  9,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "BranchPedrao",
+        "Kind":  "Editor/Template",
+        "Path":  "Settings\\Scenes\\URP2DSceneTemplate.unity",
+        "SizeKB":  9.65,
+        "GameObjects":  2,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "BranchPedrao",
+        "Kind":  "Editor/Template",
+        "Path":  "_Recovery\\0 (1).unity",
+        "SizeKB":  24.05,
+        "GameObjects":  6,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  3
+    },
+    {
+        "Branch":  "BranchPedrao",
+        "Kind":  "Editor/Template",
+        "Path":  "_Recovery\\0 (2).unity",
+        "SizeKB":  37.94,
+        "GameObjects":  9,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "BranchPedrao",
+        "Kind":  "Editor/Template",
+        "Path":  "_Recovery\\0 (3).unity",
+        "SizeKB":  37.94,
+        "GameObjects":  9,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "BranchPedrao",
+        "Kind":  "Editor/Template",
+        "Path":  "_Recovery\\0 (4).unity",
+        "SizeKB":  37.94,
+        "GameObjects":  9,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    },
+    {
+        "Branch":  "BranchPedrao",
+        "Kind":  "Editor/Template",
+        "Path":  "_Recovery\\0.unity",
+        "SizeKB":  16.77,
+        "GameObjects":  4,
+        "PrefabInstances":  0,
+        "MonoBehaviours":  2
+    }
+]

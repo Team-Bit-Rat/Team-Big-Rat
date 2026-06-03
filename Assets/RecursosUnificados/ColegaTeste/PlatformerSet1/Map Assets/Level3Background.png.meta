@@ -1,0 +1,663 @@
+fileFormatVersion: 2
+guid: 1da0468cbfe4f4548a7ccad8c79d6d4a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1011963365622120451
+    second: Level3Background_0
+  - first:
+      213: 7421374510743188398
+    second: Level3Background_1
+  - first:
+      213: -8725790363363570607
+    second: Level3Background_2
+  - first:
+      213: -5990540917954072433
+    second: Level3Background_3
+  - first:
+      213: -6522547505639679368
+    second: Level3Background_4
+  - first:
+      213: 8829817555407403542
+    second: Level3Background_5
+  - first:
+      213: -6585010781181154046
+    second: Level3Background_6
+  - first:
+      213: -4199475799468871424
+    second: Level3Background_7
+  - first:
+      213: -393576518180850784
+    second: Level3Background_8
+  - first:
+      213: 5524551186847275325
+    second: Level3Background_9
+  - first:
+      213: 3812416816904353726
+    second: Level3Background_10
+  - first:
+      213: 1877013483225470742
+    second: Level3Background_11
+  - first:
+      213: 2977484378318426247
+    second: Level3Background_12
+  - first:
+      213: -7560817717950535646
+    second: Level3Background_13
+  - first:
+      213: 7272802466293272783
+    second: Level3Background_14
+  - first:
+      213: -7581121581193662728
+    second: Level3Background_15
+  - first:
+      213: 5794574827753642332
+    second: Level3Background_16
+  - first:
+      213: 1319183590487993209
+    second: Level3Background_17
+  - first:
+      213: 2439172750626083935
+    second: Level3Background_18
+  - first:
+      213: 7710713883056378279
+    second: Level3Background_19
+  - first:
+      213: -2528035115080536471
+    second: Level3Background_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Level3Background_0
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 431
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3008d95c1573b0e00800000000000000
+      internalID: 1011963365622120451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_1
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 431
+        width: 114
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea37cf12cc40ef660800000000000000
+      internalID: 7421374510743188398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_2
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 303
+        width: 50
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15c003f45e3c7e680800000000000000
+      internalID: -8725790363363570607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_3
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 303
+        width: 146
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f80b7ec36c25ddca0800000000000000
+      internalID: -5990540917954072433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_4
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 367
+        width: 66
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87a9cbff9914b75a0800000000000000
+      internalID: -6522547505639679368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_5
+      rect:
+        serializedVersion: 2
+        x: 1471
+        y: 383
+        width: 18
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61af095c840d98a70800000000000000
+      internalID: 8829817555407403542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_6
+      rect:
+        serializedVersion: 2
+        x: 1535
+        y: 383
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20d649955975d94a0800000000000000
+      internalID: -6585010781181154046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_7
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 383
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 001fec9920778b5c0800000000000000
+      internalID: -4199475799468871424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_8
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 367
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a335e1fd3cb98af0800000000000000
+      internalID: -393576518180850784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_9
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 303
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d399e7bb8062bac40800000000000000
+      internalID: 5524551186847275325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_10
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 239
+        width: 18
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb73f4b55ec68e430800000000000000
+      internalID: 3812416816904353726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_11
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 335
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 617d54271dd7c0a10800000000000000
+      internalID: 1877013483225470742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_12
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 303
+        width: 34
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 780d1f54446225920800000000000000
+      internalID: 2977484378318426247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_13
+      rect:
+        serializedVersion: 2
+        x: 1615
+        y: 303
+        width: 18
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 228241e2854921790800000000000000
+      internalID: -7560817717950535646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_14
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 271
+        width: 114
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc0def46f4f2ee460800000000000000
+      internalID: 7272802466293272783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_15
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 207
+        width: 50
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fe67e1a6127ac690800000000000000
+      internalID: -7581121581193662728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_16
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 239
+        width: 34
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c591da8da177a6050800000000000000
+      internalID: 5794574827753642332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_17
+      rect:
+        serializedVersion: 2
+        x: 1487
+        y: 271
+        width: 66
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97baf887c7eae4210800000000000000
+      internalID: 1319183590487993209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_18
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 127
+        width: 98
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5451e281bea9d120800000000000000
+      internalID: 2439172750626083935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_19
+      rect:
+        serializedVersion: 2
+        x: 1487
+        y: 239
+        width: 82
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a19f3c6c65f10b60800000000000000
+      internalID: 7710713883056378279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level3Background_20
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 191
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96e29e9f47d9aecd0800000000000000
+      internalID: -2528035115080536471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Level3Background_0: 1011963365622120451
+      Level3Background_1: 7421374510743188398
+      Level3Background_10: 3812416816904353726
+      Level3Background_11: 1877013483225470742
+      Level3Background_12: 2977484378318426247
+      Level3Background_13: -7560817717950535646
+      Level3Background_14: 7272802466293272783
+      Level3Background_15: -7581121581193662728
+      Level3Background_16: 5794574827753642332
+      Level3Background_17: 1319183590487993209
+      Level3Background_18: 2439172750626083935
+      Level3Background_19: 7710713883056378279
+      Level3Background_2: -8725790363363570607
+      Level3Background_20: -2528035115080536471
+      Level3Background_3: -5990540917954072433
+      Level3Background_4: -6522547505639679368
+      Level3Background_5: 8829817555407403542
+      Level3Background_6: -6585010781181154046
+      Level3Background_7: -4199475799468871424
+      Level3Background_8: -393576518180850784
+      Level3Background_9: 5524551186847275325
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,702 @@
+fileFormatVersion: 2
+guid: 1e1417dde4d9cb747bef9023896c9c1b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5278236736914061422
+    second: dano_recebido 1_0
+  - first:
+      213: 6828126197217661948
+    second: dano_recebido 1_1
+  - first:
+      213: 768085311227654285
+    second: dano_recebido 1_2
+  - first:
+      213: 4521824362115431587
+    second: dano_recebido 1_3
+  - first:
+      213: 4383342270238581656
+    second: dano_recebido 1_4
+  - first:
+      213: 2547689864909653683
+    second: dano_recebido 1_5
+  - first:
+      213: 4784353641178997590
+    second: dano_recebido 1_6
+  - first:
+      213: 5578320963505400652
+    second: dano_recebido 1_7
+  - first:
+      213: 4670415308076766765
+    second: dano_recebido 1_8
+  - first:
+      213: 9122386703384619911
+    second: dano_recebido 1_9
+  - first:
+      213: -8977342300800286194
+    second: dano_recebido 1_10
+  - first:
+      213: -6139450240371828655
+    second: dano_recebido 1_11
+  - first:
+      213: -1605467325167884093
+    second: dano_recebido 1_12
+  - first:
+      213: -5131730680668250045
+    second: dano_recebido 1_13
+  - first:
+      213: 7729038619229329801
+    second: dano_recebido 1_14
+  - first:
+      213: -4989709887725210698
+    second: dano_recebido 1_15
+  - first:
+      213: -3641481791856135121
+    second: dano_recebido 1_16
+  - first:
+      213: 2419113285280425848
+    second: dano_recebido 1_17
+  - first:
+      213: -8211799370040053745
+    second: dano_recebido 1_18
+  - first:
+      213: 5118504068823730655
+    second: dano_recebido 1_19
+  - first:
+      213: 8764197076387270391
+    second: dano_recebido 1_20
+  - first:
+      213: 4942682416932353222
+    second: dano_recebido 1_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dano_recebido 1_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29702df27afefb6b0800000000000000
+      internalID: -5278236736914061422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_1
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf392b2799062ce50800000000000000
+      internalID: 6828126197217661948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_2
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d807be46589c8aa00800000000000000
+      internalID: 768085311227654285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_3
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3acf898bc4fb0ce30800000000000000
+      internalID: 4521824362115431587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_4
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89366822292c4dc30800000000000000
+      internalID: 4383342270238581656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_5
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b68dc31f663b5320800000000000000
+      internalID: 2547689864909653683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_6
+      rect:
+        serializedVersion: 2
+        x: 1252
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 653225eb940756240800000000000000
+      internalID: 4784353641178997590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_7
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4baad07c5d2a6d40800000000000000
+      internalID: 5578320963505400652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_8
+      rect:
+        serializedVersion: 2
+        x: 1652
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d26567f4af5a0d040800000000000000
+      internalID: 4670415308076766765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_9
+      rect:
+        serializedVersion: 2
+        x: 1852
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78bacfecf5a399e70800000000000000
+      internalID: 9122386703384619911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_10
+      rect:
+        serializedVersion: 2
+        x: 2052
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0206bdcdb21a6380800000000000000
+      internalID: -8977342300800286194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_11
+      rect:
+        serializedVersion: 2
+        x: 2252
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 158537ad88a4ccaa0800000000000000
+      internalID: -6139450240371828655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_12
+      rect:
+        serializedVersion: 2
+        x: 2452
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c82fd059fb38b9e0800000000000000
+      internalID: -1605467325167884093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_13
+      rect:
+        serializedVersion: 2
+        x: 2652
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 340abcf822e68c8b0800000000000000
+      internalID: -5131730680668250045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_14
+      rect:
+        serializedVersion: 2
+        x: 2852
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 989907a8caf034b60800000000000000
+      internalID: 7729038619229329801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_15
+      rect:
+        serializedVersion: 2
+        x: 3052
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b372e13b4df0cab0800000000000000
+      internalID: -4989709887725210698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_16
+      rect:
+        serializedVersion: 2
+        x: 3252
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f24bc5c8a9bd67dc0800000000000000
+      internalID: -3641481791856135121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_17
+      rect:
+        serializedVersion: 2
+        x: 3452
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 877619847ba629120800000000000000
+      internalID: 2419113285280425848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_18
+      rect:
+        serializedVersion: 2
+        x: 3652
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f007cfd1bf3d90e80800000000000000
+      internalID: -8211799370040053745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_19
+      rect:
+        serializedVersion: 2
+        x: 3852
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd941a3e454980740800000000000000
+      internalID: 5118504068823730655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_20
+      rect:
+        serializedVersion: 2
+        x: 4052
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fe84976ecea0a970800000000000000
+      internalID: 8764197076387270391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dano_recebido 1_21
+      rect:
+        serializedVersion: 2
+        x: 4252
+        y: 53
+        width: 92
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c472d2887fe79440800000000000000
+      internalID: 4942682416932353222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      dano_recebido 1_0: -5278236736914061422
+      dano_recebido 1_1: 6828126197217661948
+      dano_recebido 1_10: -8977342300800286194
+      dano_recebido 1_11: -6139450240371828655
+      dano_recebido 1_12: -1605467325167884093
+      dano_recebido 1_13: -5131730680668250045
+      dano_recebido 1_14: 7729038619229329801
+      dano_recebido 1_15: -4989709887725210698
+      dano_recebido 1_16: -3641481791856135121
+      dano_recebido 1_17: 2419113285280425848
+      dano_recebido 1_18: -8211799370040053745
+      dano_recebido 1_19: 5118504068823730655
+      dano_recebido 1_2: 768085311227654285
+      dano_recebido 1_20: 8764197076387270391
+      dano_recebido 1_21: 4942682416932353222
+      dano_recebido 1_3: 4521824362115431587
+      dano_recebido 1_4: 4383342270238581656
+      dano_recebido 1_5: 2547689864909653683
+      dano_recebido 1_6: 4784353641178997590
+      dano_recebido 1_7: 5578320963505400652
+      dano_recebido 1_8: 4670415308076766765
+      dano_recebido 1_9: 9122386703384619911
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
