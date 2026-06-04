@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1622191066
+  GlobalObjectIdHash: 678999709
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ShowTopMostFoldoutHeaderGroup: 1
   vel: 5
-  forcaPulo: 12
+  forcaPulo: 15
   gravidade: 3
   multiplicadorCorrida: 1.4
   distanciaChecarChao: 0.08
@@ -142,6 +142,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   deslocamentoNome: {x: 0, y: 0.85, z: 0}
+  ordemRenderNome: 32000
+  offsetFrenteNome: -0.1
+  configurarCameraLocalAutomaticamente: 1
+  nomeCameraCinemachine: CinemachineCamera
+  zoomCameraOrthographic: 4.5
+  offsetCameraAlvo: {x: 0, y: 1.5, z: -10}
   tilesetJogador1: {fileID: 2800000, guid: b5d86792b90cd50479a873f9c2bebe98, type: 3}
   tilesetJogador2: {fileID: 0}
   usarTilesetJogador2: 0
@@ -150,7 +156,7 @@ MonoBehaviour:
   fpsAnimacao: 20
   fpsIdle: 6
   fpsPulo: 32
-  fpsAtaque: 24
+  fpsAtaque: 12
   multiplicadorFpsDash: 2.5
   bloquearMovimentoDuranteAtaque: 1
   intervaloSyncEstadoRede: 0.05
@@ -159,7 +165,7 @@ MonoBehaviour:
   duracaoDash: 0.16
   cooldownDash: 0.65
   tempoCoyote: 0.12
-  bufferPulo: 0.12
+  bufferPulo: 0.13
   multiplicadorCortePulo: 0.55
   multiplicadorGravidadeQueda: 1.35
   tempoEntreAtaques: 0.2
@@ -171,7 +177,7 @@ MonoBehaviour:
   alturaMaximaDegrau: 0.28
   distanciaChecarDegrau: 0.16
   aplicarSpawnMultiplayerPorOwner: 1
-  cenaSpawnMultiplayer: Unified_ColegaTeste_Scenes_CenaDoColega
+  cenaSpawnMultiplayer: ColegaMapa
   spawnJogador1: {x: 0.52, y: 0.35, z: 0}
   spawnJogador2: {x: 137, y: 0.35, z: 0}
   danoAtaqueBase: 50

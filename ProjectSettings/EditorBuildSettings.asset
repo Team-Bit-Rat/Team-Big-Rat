@@ -6,13 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Unificadas/Unified_GabiruSceneRefresh_Menu_VisualFinal.unity
+    path: Assets/Scenes/Unificadas/GabsMenu.unity
     guid: 276553be33344af2abb5f15bd19031c7
   - enabled: 1
-    path: Assets/Scenes/Unificadas/Unified_GabiruScene_Menu.unity
-    guid: f0383b74ccfdd8441af7eec1bf136645
-  - enabled: 1
-    path: Assets/Scenes/Unificadas/Unified_ColegaTeste_Scenes_CenaDoColega.unity
+    path: Assets/Scenes/Unificadas/ColegaMapa.unity
     guid: 238c2c2201682a948ada40b217024528
   - enabled: 1
     path: Assets/Scenes/ServerHub.unity

@@ -258,17 +258,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6778325443016229017, guid: 540df61514a8e17478f2cea6be2cb29a, type: 3}
-      propertyPath: GlobalObjectIdHash
-      value: 1622191066
-      objectReference: {fileID: 0}
-    - target: {fileID: 9179334595831307718, guid: 540df61514a8e17478f2cea6be2cb29a, type: 3}
-      propertyPath: m_Name
-      value: Jogador
+    - target: {fileID: 1846836432153129015, guid: 540df61514a8e17478f2cea6be2cb29a, type: 3}
+      propertyPath: forcaPulo
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3070592678503535613, guid: 540df61514a8e17478f2cea6be2cb29a, type: 3}
       propertyPath: m_SortingOrder
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6778325443016229017, guid: 540df61514a8e17478f2cea6be2cb29a, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1622191066
+      objectReference: {fileID: 0}
+    - target: {fileID: 6778325443016229017, guid: 540df61514a8e17478f2cea6be2cb29a, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6778325443016229017, guid: 540df61514a8e17478f2cea6be2cb29a, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 678999709
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179334595831307718, guid: 540df61514a8e17478f2cea6be2cb29a, type: 3}
+      propertyPath: m_Name
+      value: Jogador
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

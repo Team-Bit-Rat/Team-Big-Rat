@@ -1190,6 +1190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuPrincipalManager
   painelMenuInicial: {fileID: 1348120767}
   painelMultiplayer: {fileID: 386215198}
+  cenaJogo: ColegaMapa
+  intervaloAtualizacaoLista: 0.35
 --- !u!4 &1028239693
 Transform:
   m_ObjectHideFlags: 0
