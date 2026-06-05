@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!29 &1
 OcclusionCullingSettings:
@@ -644,19 +644,43 @@ MonoBehaviour:
   velocidadeAndando: 5
   velocidadeCorrendo: 10
   aceleracao: 15
-  velocidadeAr: 8
   forcaPulo: 12
   pulosExtras: 1
   coyoteTime: 0.15
+  velocidadeAr: 8
   bufferPulo: 0.1
+  multiplicadorCortePulo: 0.55
+  multiplicadorGravidadeQueda: 1.35
+  dashForca: 18
+  dashDuracao: 0.16
+  dashCooldown: 1
+  dashForcaVertical: 15
   groundCheck: {fileID: 126786524}
-  groundCheckRadius: 0.2
+  groundRadius: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  spriteRenderer: {fileID: 2085286591}
-  animator: {fileID: 2085286590}
   teclaCorrida: 304
+  teclaDash: 99
+  sprite: {fileID: 2085286591}
+  anim: {fileID: 2085286590}
+  velocidadeAnimacao: 1.65
+  velocidadeAnimacaoIdle: 0.65
+  configurarColisaoPlayer: 1
+  tamanhoCapsuleColisor: {x: 0.72, y: 1.05}
+  offsetCapsuleColisor: {x: 0, y: 0.05}
+  usarMaterialSemAtrito: 1
+  alturaMaximaDegrau: 0.28
+  distanciaChecarDegrau: 0.16
+  attackDamage: 50
+  attackStunOnEnemy: 0.2
+  hitboxSize: {x: 0.8, y: 0.8}
+  hitboxOffsetX: 0.6
+  attackWindup: 0.1
+  attackActiveTime: 0.15
+  combatLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!50 &2085286593
 Rigidbody2D:
   serializedVersion: 5
@@ -761,19 +785,43 @@ MonoBehaviour:
   velocidadeAndando: 5
   velocidadeCorrendo: 10
   aceleracao: 15
-  velocidadeAr: 8
   forcaPulo: 12
   pulosExtras: 1
   coyoteTime: 0.15
+  velocidadeAr: 8
   bufferPulo: 0.1
+  multiplicadorCortePulo: 0.55
+  multiplicadorGravidadeQueda: 1.35
+  dashForca: 18
+  dashDuracao: 0.16
+  dashCooldown: 1
+  dashForcaVertical: 15
   groundCheck: {fileID: 126786524}
-  groundCheckRadius: 0.2
+  groundRadius: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  spriteRenderer: {fileID: 2085286591}
-  animator: {fileID: 2085286590}
   teclaCorrida: 304
+  teclaDash: 99
+  sprite: {fileID: 2085286591}
+  anim: {fileID: 2085286590}
+  velocidadeAnimacao: 1.65
+  velocidadeAnimacaoIdle: 0.65
+  configurarColisaoPlayer: 1
+  tamanhoCapsuleColisor: {x: 0.72, y: 1.05}
+  offsetCapsuleColisor: {x: 0, y: 0.05}
+  usarMaterialSemAtrito: 1
+  alturaMaximaDegrau: 0.28
+  distanciaChecarDegrau: 0.16
+  attackDamage: 50
+  attackStunOnEnemy: 0.2
+  hitboxSize: {x: 0.8, y: 0.8}
+  hitboxOffsetX: 0.6
+  attackWindup: 0.1
+  attackActiveTime: 0.15
+  combatLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -782,4 +830,3 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 212358624}
   - {fileID: 126786524}
-
