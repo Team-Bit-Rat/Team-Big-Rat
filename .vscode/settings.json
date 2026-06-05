@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "BIGRAT_CENACT.slnx"
+    "dotnet.defaultSolution": "Team-Big-Rat.slnx"
 }
