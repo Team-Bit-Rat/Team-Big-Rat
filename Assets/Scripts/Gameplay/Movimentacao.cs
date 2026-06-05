@@ -49,6 +49,10 @@ public class Movimentacao : NetworkBehaviour
         0,
         NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Owner);
+    readonly NetworkVariable<byte> pulsoDashRede = new(
+        0,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Owner);
 
     [SerializeField] float vel = 5f;
     [SerializeField] float forcaPulo = 12f;
@@ -84,6 +88,7 @@ public class Movimentacao : NetworkBehaviour
     [SerializeField] float forcaDash = 18f;
     [SerializeField] float duracaoDash = 0.16f;
     [SerializeField] float cooldownDash = 0.65f;
+    [SerializeField] float duracaoAtaqueAnimator = 0.36f;
     [Header("Pulo")]
     [SerializeField] float tempoCoyote = 0.12f;
     [SerializeField] float bufferPulo = 0.12f;
@@ -117,6 +122,7 @@ public class Movimentacao : NetworkBehaviour
     Rigidbody2D corpo;
     Collider2D colisor;
     SpriteRenderer sprite;
+    Animator anim;
     TextMeshPro textoNome;
     bool pediuPulo;
     bool pediuAtaque;
@@ -137,6 +143,7 @@ public class Movimentacao : NetworkBehaviour
     int cliquesAtaqueEmFila;
     float instanteInicioHitboxAtaque;
     float instanteFimHitboxAtaque;
+    float momentoFimAtaqueAnimator;
     readonly List<Collider2D> bufferHitboxAtaque = new(16);
     readonly HashSet<int> alvosAtingidosNoAtaque = new();
     static readonly float[] multiplicadoresDanoCombo = { 1f, 1.2f, 1.8f };
@@ -167,6 +174,17 @@ public class Movimentacao : NetworkBehaviour
     bool cameraLocalConfigurada;
     PhysicsMaterial2D materialSemAtritoRuntime;
 
+    static readonly int AnimAndando = Animator.StringToHash("Andando");
+    static readonly int AnimCorrendo = Animator.StringToHash("Correndo");
+    static readonly int AnimPulando = Animator.StringToHash("Pulando");
+    static readonly int AnimQueda = Animator.StringToHash("Queda");
+    static readonly int AnimNoChao = Animator.StringToHash("NoChao");
+    static readonly int AnimVelocidadeY = Animator.StringToHash("VelocidadeY");
+    static readonly int AnimDash = Animator.StringToHash("Dash");
+    static readonly int AnimAtaque = Animator.StringToHash("Ataque");
+    static readonly int AnimAtaque2 = Animator.StringToHash("Ataque2");
+    static readonly int AnimAtaque3 = Animator.StringToHash("Ataque3");
+
 #if UNITY_EDITOR
     const string PastaSpritesPlayer1 = "Assets/Sprites/Objetos/Player 1";
     const string CaminhoSpriteInicialPlayer1 = "Assets/Sprites/Objetos/Player 1/Idle/idle1.png";
@@ -179,6 +197,7 @@ public class Movimentacao : NetworkBehaviour
         ConfigurarColisorDoPlayer();
 
         sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         CriarTextoSePreciso();
 
         // Movimento de plataforma: mantem rotacao estavel e garante gravidade esperada.
@@ -191,8 +210,11 @@ public class Movimentacao : NetworkBehaviour
         TentarPreencherCacheDeSpritesNoEditor();
 #endif
 
-        ConfigurarSpritesDoTilesetSelecionado();
-        AplicarFrameInicial();
+        if (!UsandoAnimator())
+        {
+            ConfigurarSpritesDoTilesetSelecionado();
+            AplicarFrameInicial();
+        }
     }
 
     void Start()
@@ -205,6 +227,7 @@ public class Movimentacao : NetworkBehaviour
         base.OnNetworkSpawn();
         nomeRede.OnValueChanged += OnNomeMudou;
         etapaAtaqueRede.OnValueChanged += OnEtapaAtaqueRedeMudou;
+        pulsoDashRede.OnValueChanged += OnPulsoDashRedeMudou;
         AtualizarTextoNome(nomeRede.Value.ToString());
         ConfigurarFisicaPorOwnership();
 
@@ -243,6 +266,7 @@ public class Movimentacao : NetworkBehaviour
         base.OnNetworkDespawn();
         nomeRede.OnValueChanged -= OnNomeMudou;
         etapaAtaqueRede.OnValueChanged -= OnEtapaAtaqueRedeMudou;
+        pulsoDashRede.OnValueChanged -= OnPulsoDashRedeMudou;
         estaDashando = false;
         estaAtacando = false;
         etapaAtaqueAtual = 0;
@@ -530,6 +554,12 @@ public class Movimentacao : NetworkBehaviour
 
     void AtualizarAnimacaoVisual()
     {
+        if (UsandoAnimator())
+        {
+            AtualizarAnimatorVisual();
+            return;
+        }
+
         if (sprite == null) return;
         if (framesIdle.Count == 0 && framesWalk.Count == 0 && framesRun.Count == 0 && framesJump.Count == 0 && framesJumpFallback.Count == 0) return;
 
@@ -603,6 +633,45 @@ public class Movimentacao : NetworkBehaviour
         }
 
         AvancarAnimacao(fpsAnimacao);
+    }
+
+    void AtualizarAnimatorVisual()
+    {
+        bool usarEstadoRede = IsSpawned && !IsOwner;
+        float velX = usarEstadoRede ? velXRede.Value : (corpo != null ? corpo.linearVelocity.x : 0f);
+        float velY = usarEstadoRede ? velYRede.Value : (corpo != null ? corpo.linearVelocity.y : 0f);
+        float velocidadeX = Mathf.Abs(velX);
+        bool estaMovendo = velocidadeX > 0.05f;
+        bool estaNoChao = usarEstadoRede ? noChaoRede.Value : (IsSpawned ? estaNoChaoCache : EstaNoChao());
+        bool correndoVisual = usarEstadoRede ? correndoRede.Value : correndo;
+        bool dashandoVisual = usarEstadoRede ? dashandoRede.Value : estaDashando;
+        bool atacandoVisual = usarEstadoRede ? etapaAtaqueRede.Value > 0 : estaAtacando;
+
+        if (sprite != null && inverterSpritePeloMovimento)
+        {
+            if (usarEstadoRede)
+            {
+                sprite.flipX = flipXRede.Value;
+            }
+            else
+            {
+                if (velX > 0.05f) sprite.flipX = inverterDirecaoDoFlipX;
+                else if (velX < -0.05f) sprite.flipX = !inverterDirecaoDoFlipX;
+            }
+        }
+
+        bool podeAnimarLocomocao = !atacandoVisual && !dashandoVisual;
+        anim.SetBool(AnimNoChao, estaNoChao);
+        anim.SetFloat(AnimVelocidadeY, velY);
+        anim.SetBool(AnimAndando, podeAnimarLocomocao && estaNoChao && estaMovendo && !correndoVisual);
+        anim.SetBool(AnimCorrendo, podeAnimarLocomocao && estaNoChao && estaMovendo && correndoVisual);
+        anim.SetBool(AnimPulando, !estaNoChao && velY > 0.1f);
+        anim.SetBool(AnimQueda, !estaNoChao && velY < -0.1f);
+
+        if (!usarEstadoRede && estaAtacando && Time.time >= momentoFimAtaqueAnimator)
+        {
+            AvancarComboOuFinalizarAtaque();
+        }
     }
 
     bool DeveDesativarJogadorDeCenaNoOnline()
@@ -705,18 +774,22 @@ public class Movimentacao : NetworkBehaviour
         estaDashando = true;
         momentoFimDash = Time.time + duracaoDash;
         proximoDashDisponivel = Time.time + cooldownDash;
+        DispararTriggerAnimacao(AnimDash);
+        EnviarPulsoDashRede();
 
         corpo.linearVelocity = direcaoDashAtual * forcaDashAtual;
     }
 
     void IniciarAtaque(int etapa)
     {
+        bool usandoAnimator = UsandoAnimator();
         List<Sprite> framesDaEtapa = ObterFramesAtaquePorEtapa(etapa);
-        if (framesDaEtapa == null || framesDaEtapa.Count == 0) return;
+        if (!usandoAnimator && (framesDaEtapa == null || framesDaEtapa.Count == 0)) return;
 
         etapaAtaqueAtual = Mathf.Clamp(etapa, 1, 3);
-        framesAtaqueAtivos = framesDaEtapa;
+        framesAtaqueAtivos = usandoAnimator ? null : framesDaEtapa;
         estaAtacando = true;
+        momentoFimAtaqueAnimator = Time.time + Mathf.Max(0.1f, duracaoAtaqueAnimator);
         proximoAtaqueDisponivel = Time.time + tempoEntreAtaques;
         if (IsSpawned && IsOwner)
         {
@@ -727,7 +800,14 @@ public class Movimentacao : NetworkBehaviour
         instanteInicioHitboxAtaque = Time.time + Mathf.Max(0f, tempoWindupAtaque);
         instanteFimHitboxAtaque = instanteInicioHitboxAtaque + Mathf.Max(0.01f, tempoHitboxAtiva);
 
-        TrocarFramesAtivos(framesAtaqueAtivos, false);
+        if (usandoAnimator)
+        {
+            DispararTriggerAnimacao(ObterTriggerAtaquePorEtapa(etapaAtaqueAtual));
+        }
+        else
+        {
+            TrocarFramesAtivos(framesAtaqueAtivos, false);
+        }
     }
 
     List<Sprite> ObterFramesAtaquePorEtapa(int etapa)
@@ -760,6 +840,7 @@ public class Movimentacao : NetworkBehaviour
         etapaAtaqueAtual = 0;
         cliquesAtaqueEmFila = 0;
         framesAtaqueAtivos = null;
+        momentoFimAtaqueAnimator = 0f;
         alvosAtingidosNoAtaque.Clear();
         if (IsSpawned && IsOwner)
         {
@@ -783,12 +864,27 @@ public class Movimentacao : NetworkBehaviour
         }
 
         etapaAtaqueAtual = etapa;
+        if (UsandoAnimator())
+        {
+            framesAtaqueAtivos = null;
+            estaAtacando = true;
+            momentoFimAtaqueAnimator = Time.time + Mathf.Max(0.1f, duracaoAtaqueAnimator);
+            DispararTriggerAnimacao(ObterTriggerAtaquePorEtapa(etapaAtaqueAtual));
+            return;
+        }
+
         framesAtaqueAtivos = ObterFramesAtaquePorEtapa(etapaAtaqueAtual);
         estaAtacando = framesAtaqueAtivos != null && framesAtaqueAtivos.Count > 0;
         if (estaAtacando)
         {
             TrocarFramesAtivos(framesAtaqueAtivos, false);
         }
+    }
+
+    void OnPulsoDashRedeMudou(byte anterior, byte atual)
+    {
+        if (!IsSpawned || IsOwner || atual == anterior) return;
+        DispararTriggerAnimacao(AnimDash);
     }
 
     void AtualizarJanelaHitboxAtaque()
@@ -906,6 +1002,36 @@ public class Movimentacao : NetworkBehaviour
     bool PodeControlarLocalmente()
     {
         return !IsSpawned || IsOwner;
+    }
+
+    bool UsandoAnimator()
+    {
+        return anim != null && anim.runtimeAnimatorController != null;
+    }
+
+    void DispararTriggerAnimacao(int parametro)
+    {
+        if (!UsandoAnimator()) return;
+        anim.ResetTrigger(parametro);
+        anim.SetTrigger(parametro);
+    }
+
+    int ObterTriggerAtaquePorEtapa(int etapa)
+    {
+        return Mathf.Clamp(etapa, 1, 3) switch
+        {
+            2 => AnimAtaque2,
+            3 => AnimAtaque3,
+            _ => AnimAtaque
+        };
+    }
+
+    void EnviarPulsoDashRede()
+    {
+        if (!IsSpawned || !IsOwner) return;
+        pulsoDashRede.Value = pulsoDashRede.Value == byte.MaxValue
+            ? (byte)1
+            : (byte)(pulsoDashRede.Value + 1);
     }
 
     void ConfigurarRenderNomeNoTopo()

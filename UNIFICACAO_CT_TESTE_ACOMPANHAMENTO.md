@@ -133,3 +133,19 @@ Resumo:
   - grupos de GUID duplicado em `.meta` dentro de `Assets`: 0
   - `dotnet build Assembly-CSharp.csproj -nologo -v minimal`
   - resultado: 0 erros, 0 warnings.
+
+## Atualizacao complementar (2026-06-04)
+- Relatorio detalhado criado:
+  - `UnificacaoDados/Relatorios/20_ANIMATOR_JOGADOR_COLEGAMAPA_GABSMENU.md`
+- Cenas ativas confirmadas:
+  - `Assets/Scenes/Unificadas/GabsMenu.unity`
+  - `Assets/Scenes/Unificadas/ColegaMapa.unity`
+- `GabsMenu` segue apontando para `ColegaMapa`.
+- `ColegaMapa` segue instanciando `Assets/Jogador.prefab` como `PlayerPrefab`.
+- `Assets/Jogador.prefab` recebeu `Animator` apontando para `Assets/Animacoes/Player/Player.controller`.
+- O `Player.controller` nao foi alterado.
+- `Assets/Scripts/Gameplay/Movimentacao.cs` agora usa o Animator quando ele existe e mantem animacao manual por sprites apenas como fallback.
+- Sincronizacao multiplayer das animacoes passa pelos estados de rede existentes e por pulso de dash para replicar o trigger nos proxies.
+- Validacao:
+  - `dotnet build Assembly-CSharp.csproj -nologo -v minimal`
+  - resultado: 0 erros, 0 warnings.

@@ -9,7 +9,7 @@
 - `Rede/AnuncianteHostLAN.cs`: anuncia host na LAN com metadados da sala.
 
 ## Gameplay
-- `Gameplay/Movimentacao.cs`: movimento de rede, pulo, dash, ataque com debounce e animacao por sprites.
+- `Gameplay/Movimentacao.cs`: movimento de rede, pulo, dash e ataque. Quando o prefab tem `Animator` com controller, dirige os parametros/triggers do Animator (`Andando`, `Correndo`, `Pulando`, `Queda`, `NoChao`, `VelocidadeY`, `Dash`, `Ataque*`) e usa os frames por sprites apenas como fallback para objetos antigos sem Animator.
 - `Gameplay/BlocoColisaoMapa.cs`: helper simples pra bloco/plataforma de colisao.
 
 ## Core
