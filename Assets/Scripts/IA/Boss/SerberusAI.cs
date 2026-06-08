@@ -263,13 +263,15 @@ public class SerberusAI : MonoBehaviour
         anim.SetTrigger(ANIM_PREP_ATK);
         yield return new WaitForSeconds(tempoPrepAtaque);
 
-        anim.SetTrigger(ANIM_ATACANDO);
-        yield return new WaitForSeconds(0.3f);
+        anim.SetBool(ANIM_ATACANDO, true);   // <- Bool true
+        yield return new WaitForSeconds(0.8f); // <- ajuste pra duração da animação de ataque
+
+        anim.SetBool(ANIM_ATACANDO, false);  // <- Bool false, volta pro Idle
 
         if (DistanciaAoPlayer() <= distanciaAtaque + 0.5f)
-            AplicarDanoNoPlayer();
+        AplicarDanoNoPlayer();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
 
         timerAtaque  = cooldownAtaque;
         estaAtacando = false;
